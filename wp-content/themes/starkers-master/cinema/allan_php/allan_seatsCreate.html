@@ -1,0 +1,108 @@
+ <!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Seats Selection</title>
+<script  src="../allan_js/jquery-1.9.0.min.js"></script>
+<script>
+$(document).ready(function() {
+// selecting movie details to be passed on by ajax on this page	
+$("#table").on("click", "td", function(){
+		var $this=$(this);
+		$this.removeClass( "NotBooked").addClass( "Booked");
+		var $myId=$this.attr('id');
+		alert($myId)
+		var $myclass="Booked";
+		
+		$on_click_ajax($myclass,$myId);
+		// 3 minutes timer//ajax function after expire
+		setTimeout(function(){
+			$.ajax({
+				url:'allan_seats_expire.php',
+				type: "POST",
+				cache:false,
+				data: ({'seat_id':$myId,}),
+				success: function(data,state){
+					alert(state)
+					var newHTML;
+					newHTML=data;
+					$('#taken').html(newHTML);
+					}
+			});//end ajax
+		}, 10000);
+		return false;
+});
+
+function $on_click_ajax($book,$id){
+			alert('we are in ajax');
+			$.ajax({
+				url:'allan_seats_update.php',
+				type: "POST",
+				data: ({'bookState':$book,
+						'id':$id,
+					}),
+				success: function(data,state){
+					alert(state);
+					var newHTML;
+					newHTML = '<h2>Your vote is counted</h2>';
+					newHTML += '<p>The average rating for this movie is ';
+					newHTML += data + '.</p>';
+					$('#update').html(newHTML);
+					
+					}
+			});//end ajax
+		}// end onclick ajax
+	// load php	periodically	
+function $periodic_ajax(){
+		$.ajax({
+				url:'allan_seats_write.php',
+				type: "POST",
+				data:{'create':'yes'},
+				success: function(data,state){
+					var newHTML;
+					newHTML = data;
+					$('#table').html(newHTML);
+					// first wait
+					
+					setInterval($periodic_ajax,3000);	
+					}
+				});// end ajax
+		}// end function
+	// intial call	
+	$periodic_ajax();
+});// end document ready
+</script>
+<style>
+body{
+	position:relative;
+	padding-left:40%;
+	padding-top:5%;
+	}
+.Booked,Taken{
+	color:#F00;
+	}
+.NotBooked{
+	color:#009;
+	}
+#table{
+	
+	}
+#update{
+
+	}	
+.seat{
+	position:relative;
+	background-color:#666;
+	width:20px;
+	height:20px;
+	}
+</style>
+</head>
+    <body>
+    <p class="seat"></p>
+    <h2>Cinema Seat Demo</h2>
+    <div id="table"></div>
+    <div id="update"></div>
+    <div id="taken"></div>
+    </body>
+</html>

@@ -1,0 +1,256 @@
+/**
+* Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+* http://cssreset.com
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
+body {
+line-height: 1;
+}
+ol, ul {
+list-style: none;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: '';
+content: none;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+/* Clear fix */
+.clearfix:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}* html .clearfix{zoom:1}*:first-child+html .clearfix{zoom:1}
+
+/* Foundation */
+.block{display: block}
+.inline-block, .clearfix{display: inline-block}
+.margin-auto {margin: 0px auto}
+.fleft, .menubar{float:left}
+.fright, .social_media, .logo, .tabs{float:right}
+a{color:black; text-decoration: none}
+a:hover{text-decoration: underline}
+
+/* STRUCTURE */    
+body {
+	font-family:helvetica;
+	background-color: black; 
+}
+
+.container{
+	width: 100%;
+	position:relative;
+	text-transform: uppercase;
+}
+
+/* HOME */
+img#bkg{
+	width:100%;
+	min-width: 1840px;
+	position: absolute;
+	top:0px;
+	left:0px;
+	
+}
+.feature{
+	width:1246px;
+	position: relative;
+	margin: auto;
+	margin-top: 600px;
+}
+/* 2.0 feature box */
+.feature_box{
+	z-index: 2px;
+	width: 893px;
+	height:469px;
+	position:absolute;
+	top:0px;
+	left:190px;
+	font-family: din;
+	background-color: #e93a3a;
+}
+.feature_filter{
+	margin-top: 12px;
+	margin-left: 325px;
+	margin-bottom: 410px;
+}
+.feature_filter li{
+	display:inline-block;
+	margin-right: 20px;
+}
+.feature_filter a{
+	color:#fff;
+	font-size: 14px;
+	margin: auto;
+	margin-top: 6px;
+	margin-bottom: 355px;
+}
+a#all_movies{
+	color:#fff;
+	font-size: 13px;
+	margin-left:640px;
+}
+
+
+/* 3.0 feature slider */
+.feature_slider{
+	z-index: 3px;
+	width:1257px;
+	position:absolute;
+	top:77px;
+	left:0px;
+	height:340px;
+	
+}
+.feature_slider a:focus img{
+	transform: scale(1.2)
+}
+.dte a:focus img{
+	transform: scale(1.2)
+}
+/* 3.01 now showing */
+.nowshowing{
+	display:none;
+	position:absolute;
+	left:50px;
+}
+.nowshowing li{
+	display: inline-block;
+}
+/* 3.01 coming soon */
+.comingsoon{
+	/*display:none;*/
+	position:absolute;
+	left:50px;
+}
+.comingsoon li{
+	display: inline-block;
+}
+#dte1, #dte2, #dte3, #dte4, #dte5{
+	width:114px;
+	height: 37px;
+	position: absolute;
+	top:20px;	
+}
+#dte1{left:124px;}
+#dte2{left:355px}
+#dte3{left:585px}
+#dte4{right:227px}
+#dte5{right:-3px}
+
+/* feature slider navigation */
+#prvs,#nxt{
+	position:absolute;
+	top:120px;
+	width:24px;
+	height:105px;
+	text-indent: -999999px;
+	background-repeat:no-repeat;
+}
+#prvs{
+	background-image: url("../images/homer/prvs.png");
+	left:-50px;	
+}
+#nxt{
+	background-image: url("../images/homer/nxt.png");
+	right:-50px;
+}
+
+
+/* feature state*/
+#focus{
+	/*display:none;*/
+	z-index: 5;
+	position:absolute;
+	top:-34px;
+	left:441px;
+	width:271px;
+	height:108px;
+	padding-top:300px; 
+	background: -moz-linear-gradient(top, rgba(0,0,0,0) 10%, rgba(0,0,0,1) 120%);
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 10%,rgba(0,0,0,1) 120%);
+    background: -o-linear-gradient(top, rgba(0,0,0,0) 10%,rgba(0,0,0,1) 120%);
+    background: -ms-linear-gradient(top, rgba(0,0,0,0) 10%,rgba(0,0,0,1) 120%);
+    background: linear-gradient(top, rgba(0,0,0,0) 10%,rgba(0,0,0,1) 120%);
+    background-repeat: no-repeat;
+
+}
+.i_t_s{
+	margin-bottom: 20px;
+	margin-left:35px;
+}
+#synopsis{
+	display:inline-block;
+	margin: 0px auto;
+	width:17px;
+	height:32px;
+	text-indent: -999999px;
+	background-image:url("../images/synopsis.png");
+	background-repeat: no-repeat;
+	margin-right: 50px
+}
+#trailer{
+	display:inline-block;
+	margin: 0px auto;
+	width:40px;
+	height:39px;
+	text-indent: -999999px;
+	background-image:url("../images/play.png");
+	background-repeat: no-repeat;
+	margin-right: 50px
+}
+#share{
+	display:inline-block;
+	margin: 0px auto;
+	width:40px;
+	height:39px;
+	text-indent: -999999px;
+	background-image:url("../images/share.png");
+	background-repeat: no-repeat;
+}
+#buy{
+	display:block;
+	font-family: din;
+	vertical-align: middle;
+	margin-left:50px;
+	
+}
+#buy a{
+	font-size: 20px;
+	color:#e93a3a;
+	text-transform: uppercase;
+}
+#ticket_icon{
+	display:inline-block;
+	width:30px;
+	height:27px;
+	background-image: url("../images/ticket.png");
+	background-repeat: no-repeat;
+	margin-right: 5px;
+}

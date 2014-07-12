@@ -1,0 +1,86 @@
+<html>
+	<head>
+   
+    <title>home</title>
+		<link rel="stylesheet" href="styles/theme.css" media="screen"/>
+          <script  src="../js/jquery-1.9.0.min.js"></script>
+       	<script>
+		$(document).ready(function() {
+			
+			alert('hey');
+			
+			});
+		</script>	
+	</head>
+	<body>
+		<div class="container">
+			<img id="bkg" src="images/homer/spdy.jpg"/>
+			<div id="vignette"></div>
+			<div class="search">
+							<form method="post" action="/search" id="search" >
+								<input name="search movies" type="text" size="40" placeholder="Search movies..."/>
+							</form>
+			</div>
+			<div class="feature">
+				<div class="feature_box">
+					<ul class="feature_filter">
+						<li><a href="">now showing</a></li>
+						<li><a href="">coming soon</a></li>
+					</ul>
+					<a id="all_movies" href="">check out our full movie listing</a>
+				</div>
+				<ul class="feature_slider">
+					
+					<li class="comingsoon">
+						<ul>
+							<li><span id="prvs">next</span></li>
+							<li>
+								<a href="#">
+									<img src="images/homer/apes.jpg"/>
+									<img id="dte1" class="dte" src="images/homer/shwdte.png"/>
+								</a>	
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/homer/avg.jpg"/>
+									<img id="dte2" class="dte" src="images/homer/shwdte.png"/>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/homer/22.jpg"/>
+									<img id="dte3" class="dte" src="images/homer/shwdte.png"/>
+									<div id="focus">
+												<ul>
+													<li class="i_t_s">
+														<ul>
+															<li id="synopsis"><a href="#" title="synopsis">see info</a></li>
+															<li id="trailer"><a href="#" title="trailer">watch trailer</a></li>
+															<li id="share"><a href="#" title="share">share</a></li>
+														</ul>
+													</li>
+													<li id="buy"><a href="#" title="buy"><span id="ticket_icon"></span>buy ticket</a></li>
+												</ul>
+											</div>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/homer/ff2.jpg"/>
+									<img id="dte4" class="dte" src="images/homer/shwdte.png"/>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="images/homer/dra2.jpg"/>
+									<img id="dte5" class="dte" src="images/homer/shwdte.png"/>
+								</a>
+							</li>
+							<li><span id="nxt">next</span></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

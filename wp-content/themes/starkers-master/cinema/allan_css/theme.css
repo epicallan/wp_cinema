@@ -1,0 +1,178 @@
+/**
+* Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+* http://cssreset.com
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
+body {
+line-height: 1;
+}
+ol, ul {
+list-style: none;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: '';
+content: none;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+/* Clear fix */
+.clearfix:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}* html .clearfix{zoom:1}*:first-child+html .clearfix{zoom:1}
+
+/* Foundation */
+.block{display: block}
+.inline-block, .clearfix{display: inline-block}
+.margin-auto {margin: 0px auto}
+.fleft, .menubar{float:left}
+.fright, .social_media, .logo, .tabs{float:right}
+a{color:black; text-decoration: none}
+a:hover{text-decoration: underline}
+    
+    /* STRUCTURE*/
+    
+body {
+	font-family:helvetica; 
+}
+
+.container{
+	width: 100%;
+
+}
+
+.menubar{
+	width:20%;
+	height:100%;
+	background-color:#252525;
+	text-align: center;
+	color:#fff;
+	font-family: bebas neue;
+	font-size: 20px;
+	
+}
+.menubar ul{
+	margin-top: 70%;
+}
+.menubar li{
+	padding:5%;
+}
+
+li.moviegrid{
+	width:80%;
+	float: right;
+	line-height: 0;
+	}
+
+li.filter_nav{
+	padding:1% 0px;
+	text-align:center;
+	font-family: DIN;
+	color:#959595;
+}
+
+.filters li{
+	display:inline;
+	padding:5px 10px;
+}
+
+.movies li{
+	display: inline-block;
+	min-width: 368px;
+	width:24%;
+}
+.movies img{
+	min-width:100%;
+	height:auto;
+}
+
+
+.ticket_container{
+	width:1609px;
+	height:100%;
+	background-color:rgba(0, 0, 0, 0.9);
+	float:right;
+}
+.ticket{
+	width: 860px;
+	background-color:#fff;
+	height:auto;
+	margin:0px auto;
+}
+. ticket li{
+	display:inline-block;
+}
+.details{
+	width: 300px;
+	padding: 10px;
+	font-size: 9px;
+}
+.crumbs_nav li{
+	display:inline;
+	margin-left: 8px;
+}
+.breadcrumbs{
+	margin-bottom: 20px;
+	font-family: din;
+}
+li.breadcrumbs h3{
+	margin:0px auto;
+
+}
+.date{
+	width:110px;
+	margin: 0 30px 0 10px
+}
+.time{
+	width:120px;
+}
+.ticket{
+	width:317px;
+}
+.day li{
+	display:inline-block;
+	font-family: bebas neue;
+}
+.num{
+	font-size: 52px;
+}
+.mm li{
+	display:block;
+}
+li.month{
+	font-size: 24px;
+}
+li.year{
+	font-size: 18px;
+}
+.time h1{
+	font-size: 52px;
+	font-family: bebas neue;
+}

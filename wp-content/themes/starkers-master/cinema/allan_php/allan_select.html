@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Process</title>
+</head>
+<script  src="../allan_js/jquery-1.9.0.min.js"></script>
+<script>
+$(document).ready(function() {
+
+
+   
+});
+	
+</script>
+
+<body>
+<h2>Select movie date and Time</h2>
+<p>Avatar</p> 
+<img src="../Alogo.png">
+<form action="allan_seats.php" method="post" class="form">
+<input type="hidden" name="movie" value ="avatar" >
+	<p>Date</p>
+  <select class="details" id="dates" name="dates">
+      <option value="4/10/2014" name="date" id="date">4/10/2014</option>
+      <option value="4/11/2014" name="date2" id="date2">4/11/2014</option>
+  </select >
+<p>Time</p> 
+     <select class="details" id="time" name="time">
+          <option value="9:00" name="time1">9:00</option>
+          <option value="10:00" name="time2">10:00</option>
+     </select>
+     <p></p>
+     <input type="submit" name="submit" value="Submit">
+</form>
+<div></div>
+</body>
+</html>
