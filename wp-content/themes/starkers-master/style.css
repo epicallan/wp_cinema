@@ -104,7 +104,6 @@ img#bkg{min-width:100%;}
 /* W3C */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#e6000000',GradientType=1 ); 
 /* IE6-9 fallback on horizontal gradient */
 }
-
 /* searchbox */
 .featured_image{position:relative;}
 .search { z-index:3;position:absolute;top:1.875em;right:5.43478261%;width:8.9%;}
@@ -112,59 +111,20 @@ img#bkg{min-width:100%;}
 }
 
 
+/* FEATURE */
 
-.feature{width:67.7173913%;position: absolute; top:50%;left:50%;margin-left:-24.8586957%;}
+.feature{width:45%;height:40%;position: absolute; top:50%;left:50%;margin-left:-22.5%;}
 /* 2.0 feature box */
-.feature_box{
-	z-index: 3px;
-	width: 893px;
-	height:330px;
-	position:absolute;
-	top:0px;
-	left:190px;
-	font-family: din;
-	background-color: #e93a3a;
-}
-.feature_filter{
-	margin-top: 12px;
-	margin-left: 325px;
-	margin-bottom: 410px;
-}
-.feature_filter li{
-	display:inline-block;
-	margin-right: 20px;
-}
-.feature_filter a{
-	color:#fff;
-	font-size: 14px;
-	margin: auto;
-	margin-top: 6px;
-	margin-bottom: 355px;
-}
-a#all_movies{
-	color:#fff;
-	font-size: 13px;
-	margin-left:640px;
-}
-
-
+.feature_box{z-index: 3px;width: 80%;position:relative;top:0px;left:50%;margin-left:-40%;font-family: din;background-color: #e93a3a;}
+.feature_filter{padding-top: 1%;text-align:center;margin-bottom: 46%;}
+.feature_filter li{display:inline-block;margin-right: 20px;}
+.feature_filter a{color:#fff;font-size: 14px;margin: auto;margin-top: 6px;margin-bottom: 355px;}
+a#all_movies{color:#fff;font-size: 13px;margin-left:640px;}
 /* 3.0 feature slider */
 /*allan changed*/
-.feature_slider {
-width: 1200px;
-position: absolute;
-top: 36px;
-left: 0px;
-height: 274px;
-/* overflow: hidden; */
-margin-left: 30px;
-}
-.feature_slider a:focus img{
-	transform: scale(1.2)
-}
-.dte a:focus img{
-	transform: scale(1.2)
-}
+.feature_slider {width: 100%;position: absolute;top: 15%;height: 274px;}
+.feature_slider a:focus img{transform: scale(1.2,1.2)}
+.dte a:focus img{transform: scale(1.2,1.2)}
 /* 3.01 now showing */
 .nowshowing{
 	display:none;
