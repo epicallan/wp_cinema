@@ -44,7 +44,7 @@ jQuery(document).ready(function($) {
 			$(".date_right").html(date.$date+" "+date.$month);
 		}// end intial vals
 	//load ticket staff
-	
+/****************************On clicking on a movie and getting its dates and time***************************/	
 	$(".feature_slider li").on("click", ".book", function(){
 		var $this=$(this);
 		//$on_click_ajax(null,null,0);
@@ -64,8 +64,22 @@ jQuery(document).ready(function($) {
 		////alert($post);
 		ajax_dates($post);
 		movie_times($post);
+		ajax_mobileMoney_status();
 		
 			});// end click
+/**********************************checking if mobile money is up*******************************/
+	function ajax_mobileMoney_status(){
+	  jQuery.ajax({
+		 url: MyAjax.ajaxurl,
+		 type:'POST',
+		 dataType: 'json',
+		 data: ({action : 'mobile_moneysms'}),
+		 success: function(data,state) {
+				alert("mm status");
+				console.log(data);
+				}
+		 });//end ajax
+		}// end ajax_cats function	
 /**************************seting calender dates************************************************/
 function ajax_dates($id){
 	  jQuery.ajax({
