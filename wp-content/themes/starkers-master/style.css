@@ -85,54 +85,35 @@ a:hover{text-decoration: underline}
     
     /* STRUCTURE*/
     
-body {
-	font-family:helvetica;
-	font-size: 16px;
-	width:100%;
-	height:100%;
-	line-height:1.2em; 
-	background-color:black;
+body {font-family:helvetica;font-size: 16px;width:100%;height:100%;line-height:1.2em; background-color:black;}
+.container{width: 100%;}
+#intial_home{width:100%;position:relative;
 }
 
-.container{
-	width: 100%;
+.menubar{display:none;width:13%;height:100%;background-color:#252525;text-align: center;color:#fff;font-family: bebas neue;font-size: 20px;}
+.menubar ul{margin-top: 70%;}
+.menubar li{padding:5%;}
 
-}
+/* BACKGROUND */
 
-.menubar{
-	display:none;
-	width:13%;
-	height:100%;
-	background-color:#252525;
-	text-align: center;
-	color:#fff;
-	font-family: bebas neue;
-	font-size: 20px;
-	
-}
-.menubar ul{
-	margin-top: 70%;
-}
-.menubar li{
-	padding:5%;
+img#bkg{min-width:100%;}
+/* vignette */
+#vignette {width: 100%;height: 100%;position: absolute;top: 0px;left: 0px;background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%); 
+/* FF3.6+ */background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.9))); 
+/* Chrome,Safari4+ */background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%); /* Chrome10+,Safari5.1+ */background: -o-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%); /* Opera 12+ */background: -ms-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%); /* IE10+ */background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%); 
+/* W3C */filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#e6000000',GradientType=1 ); 
+/* IE6-9 fallback on horizontal gradient */
 }
 
-/* HOME */
-img#bkg{
-	/*width:100%;
-	min-width: 1840px;*/
-	max-width:100%;
-	position: absolute;
-	top:0px;
-	left:0px;
-	
+/* searchbox */
+.featured_image{position:relative;}
+.search { z-index:3;position:absolute;top:1.875em;right:5.43478261%;width:8.9%;}
+#search input[type="text"]{width:100%;color:#bcbcbc;background: url("../starkers-master/images/search.png") no-repeat 19px 19px;background-position: 210px 6px;padding:3%;font: bold 0.875em Din, san-serif;text-transform: uppercase;border:2px solid #bcbcbc;	
 }
-.feature{
-	width:1246px;
-	position: relative;
-	margin: auto;
-	margin-top: 400px;
-}
+
+
+
+.feature{width:67.7173913%;position: absolute; top:50%;left:50%;margin-left:-24.8586957%;}
 /* 2.0 feature box */
 .feature_box{
 	z-index: 3px;
@@ -310,44 +291,6 @@ background-repeat: no-repeat;
 	background-repeat: no-repeat;
 	margin-right: 5px;
 }
-
-/* searchbox */
-.featured_image{
-	position:relative;
-}
-.search { 
-	z-index:3;
-	position:absolute;
-	top:30px;
-	right:100px; 
-}
-#search input[type="text"]{
-	width:250px;
-	color:#bcbcbc;
-	background: url("../starkers-master/images/search.png") no-repeat 19px 19px;
-	background-position: 210px 6px;
-	padding:6px 15px 6px 10px;
-	font: bold 14px Din, san-serif;
-	text-transform: uppercase;
-	border:2px solid #bcbcbc;	
-}
-/* vignette */
-#vignette {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%); /* FF3.6+ */
-	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.9))); /* Chrome,Safari4+ */
-	background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%); /* Opera 12+ */
-	background: -ms-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%); /* IE10+ */
-	background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#e6000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-}
-
-
 
 #ticket_icon{
 	display:inline-block;

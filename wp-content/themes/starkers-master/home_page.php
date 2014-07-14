@@ -74,7 +74,6 @@ wp_reset_query();
 ?>
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header') ); ?>
 
-<div class="container">
     <div class="ticket_container">
 		<ul class="ticket">
     <li class="details fleft">
@@ -351,16 +350,16 @@ wp_reset_query();
 	</div>
 	<div id="intial_home">
 			<img id="bkg" src="<?php echo $bck; ?>"/>
-		  <div id="vignette"></div>
-            </div>
-		<div class="search">
+			<div id="vignette"></div>
+	</div>
+	<div class="search">
 			<form method="post" action="/search" id="search" >
 			<input name="search movies" type="text" size="40" placeholder="Search movies..."/>
 			</form>
 			</div>
-			<div class="overlay"></div>
-         	<div class="feature">
-				<div class="feature_box">
+	<div class="overlay"></div>
+    <div class="feature">
+		<div class="feature_box">
 					<ul class="feature_filter">
 						<li><a class ='test' href="">now showing</a></li>
 						<li><a href="">coming soon</a></li>
@@ -368,7 +367,7 @@ wp_reset_query();
                     <div id="hide"></div>
 					<a id="all_movies" href="">check out our full movie listing</a>
 				</div>
-				<div class="feature_slider">
+		<div class="feature_slider">
                 <ul class="bxslider">
 					<?php
 					$i=0;
@@ -399,6 +398,5 @@ wp_reset_query();
 				 ?>
                   </ul> 
 				</div>
-               </div>
-           </div>
+	</div>
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer') ); ?>
