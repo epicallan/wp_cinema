@@ -29,10 +29,11 @@ if( $movie->have_posts() ) {while ($movie->have_posts()) : $movie->the_post();
  $cinema_arr[]=$cinema;
 //getting movie start date
  $start= get_post_meta( get_the_ID(), 'movie_start_date', true );
- $startdate[]=$start;
+ 
  //getting end date
  $end= get_post_meta( get_the_ID(), 'movie_end_date', true );
  $enddate[]=$end;
+ 
  //getting youtube url movie_text
   $url= get_post_meta( get_the_ID(), 'movie_text', true );
   $link[]=$url;
@@ -56,7 +57,7 @@ if( $movie->have_posts() ) {while ($movie->have_posts()) : $movie->the_post();
 
 endwhile;
 }
-//find current date
+	//find current date
 	$today= date("j M Y");
 // changing date format, and getting intial date, which is todays date
 	//$new_default_date = date("j M Y", strtotime($today)); 
@@ -292,8 +293,7 @@ wp_reset_query();
                                
                      </li> 
                         <li>
-                       
-                          	<div id="verify_container"></div>
+                       <div id="verify_container"></div>
                            
                         </li>  
                  </ul>
@@ -375,11 +375,22 @@ wp_reset_query();
                 <ul class="bxslider">
 					<?php
 					$i=0;
-				foreach($images as $key => $src){
+					 $currentdate=date('Y-m-d');
+					 foreach($enddate as $key=>$lastdate){
+						if($currentdate>$lastdate){
+						
+							}
+						}
+					//	<li><a class="fancybox-media" href="http://www.youtube.com/watch?v=opj24KnzrWo">Youtube</a></li>
+	
+					$video="https://www.youtube.com/watch?v=SPHfeNgogVs";
+					$embed_code = wp_oembed_get($video,array('width'=>500)); 	
+						
+					foreach($images as $key => $src){
 			 		$movie=$store_names[$key];
 					//remove spaces betwwen movie names
 					$movie=str_replace(" ","",$movie);
-					$date=$startdate[$key];
+					//$date=$startdate[$key]; //not used
 					$i++;
 					echo "<li class= \"slides first\" id=\"slide$i\" > <img src=\"$src\" alt=\"$movie\">
 							<div class=\"focus_slider div$i $movie$i\" attr=\"$movie$i\">
@@ -388,7 +399,7 @@ wp_reset_query();
 												<li class='i_t_s'>
 														<ul>
 															<li class='synopsis'><a href='#' title='synopsis'>see info</a></li>
-															<li class='trailer'><a href='#' title='trailer'>watch trailer</a></li>
+															<li class='trailer'><a class=\"fancybox-media\" href=\"$video\">watch trailer</a></li>
 															<li class='share'><a href='#' title='share'>share</a></li>
 														</ul>
 													</li>

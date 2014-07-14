@@ -15,8 +15,17 @@ jQuery(document).ready(function($) {
 		
 /***********remove # from urls*************/
  history.pushState("", document.title, window.location.pathname + window.location.search);
-				
-	function intial_nav(){
+		/***********fancybox**********/
+		$('.fancybox-media').fancybox({
+		openEffect  : 'none',
+		closeEffect : 'none',
+		helpers : {
+			media : {}
+		}
+	});	
+	
+/*************************************intialisaing some variables***************/
+			function intial_nav(){
 			$counter=0;obj.$val_adults=0;obj.$val_kids=0;purchase.$total_sum=0;
 			amount.adults_sum=0;amount.kids_sum=0;
 			amount.seats_adults=0;amount.seats_kids=0;purchase.$number_seats=0;
@@ -385,6 +394,7 @@ function ajax_dates($id){
 		}
 	var $i=0;
 	/*************************draw seats chart******************/
+	var t; var p;var q;	var d;	// set time out variables
 	function periodic_ajax(){
 		var t=false;
 		jQuery.ajax({
@@ -407,7 +417,8 @@ function ajax_dates($id){
 						}
 					if(data.length>0){
 						$('.tableDiv').html(data);
-						setTimeout(function(){seats_longpolling();},5000 );
+						//start the long poll process
+						p=setTimeout(function(){seats_longpolling();},2500 );
 						//re_assign_class();
 						////alert('periodic');
 						}
@@ -418,7 +429,7 @@ function ajax_dates($id){
 			}//end peri0dic function
 			
 /*********************Long Polling******************************/
-	var t; var p;var q;	var d;		
+		
 	function seats_longpolling(){
 		jQuery.ajax({
 		url: MyAjax.ajaxurl,
@@ -633,8 +644,9 @@ function ajax_dates($id){
 		 	clearInterval(r);
 			//alert(state);
 			console.log(data);
+			//keep checking whether mobile money message has been logged
 		 		if(data.length==0&&money_checks<6){
-						r=setTimeout( function(){results_longpolling();},3000 );
+						r=setTimeout( function(){results_longpolling();},2000 );
 						money_checks++;
 						console.log("counter js: "+money_checks);
 					}else{
@@ -644,7 +656,13 @@ function ajax_dates($id){
 						//place new content in verify
 						$('#verify_container').html(data);
 						//make next ajax call,to send email and sms
-						process_sms_email();
+					
+						if($('#verify_container').find('span').text()=="Oops!!!"){
+								alert('we are not sending an email');
+								return false
+							}else{
+								process_sms_email();
+								}
 						}
 			},
 		error: function(){
@@ -653,28 +671,7 @@ function ajax_dates($id){
 		  }
      	});//end ajax
 	}
-		
-		
-	// 3 minutes timer//ajax function after expire
-	/*$('#payment_details').on('click','#process',function(){
-			jQuery.ajax({
-			url: MyAjax.ajaxurl,
-		 	type:'POST',
-			data: ({action :'read_mobile_mValues'}),
-				success: function(data,state){
-					console.log("read mobile money : "+data);
-					//hide process
-					$('.process').hide();
-					$('#notice').hide();
-				//	$('.shared_nav').hide();
-					//place new content in verify
-					$('#verify_container').html(data);
-					//make next ajax call
-					process_sms_email();
-					}
-				});//end ajax
-		});*/
-
+	
 function process_sms_email(){
 	jQuery.ajax({
 		url: MyAjax.ajaxurl,
@@ -761,21 +758,27 @@ $('.close,#quit').click(function(){
 	$('.overlay').hide();
 	// $('html,body').scrollTop(-300)
 	$(".ticket_container").hide();
-	clearInterval( t );clearInterval( q);clearInterval(d);
+	clearInterval( t );clearInterval( q);clearInterval(d);clearInterval(p);
 	// hide contianer for confirmation ajax
-	$('#verify_container').html("")})		
+	$('#verify_container').html("")
+	$('.process').show();
+	$('#notice').show();
+	})	;	
+	/************************Book Again*********/
 	$('#book_again').click(function(){
-	intial_vals();
-   	clearInterval( t );clearInterval( q); clearInterval( d);
-	$('.purchase_reset').hide();$('#seats_contentID').hide();$('#phone_email_li').hide();
-	$('#payment_details').hide();$('.getting-started').hide();
-	$('.shared_nav').show();$('.content').show();
-	progress.yes=false;	
-	unbook();
-	$counter=0;
-	$on_click_ajax(null,null,0);
+		intial_vals();
+		clearInterval( t );clearInterval( q);clearInterval(d);clearInterval(p);
+		$('.purchase_reset').hide();$('#seats_contentID').hide();$('#phone_email_li').hide();
+		$('#payment_details').hide();$('.getting-started').hide();
+		$('.shared_nav').show();$('.content').show();
+		progress.yes=false;	
+		unbook();
+		$counter=0;
+		$on_click_ajax(null,null,0);
+		$('.process').show();
+		$('#notice').show();
 		// hide contianer for confirmation ajax	
-	$('#verify_container').html("");
+		$('#verify_container').html("");
 		})			
 	/*****************************************OBTAINING CURRENT TIME********************************/
 		function $time(){

@@ -27,7 +27,7 @@ function mobile_moneysms(){
 				$jason=json_encode(array('state'=>'error'));
 				echo $jason;
 				}
-	die(); 
+	
 	}
 add_action("wp_ajax_mobile_moneysms", "mobile_moneysms");
 
@@ -376,7 +376,7 @@ function read_mobile_mValues(){
 			//doing the 80% check, get all the codes in the db which might match with this one
 			recheck_money();
 			// table for not worked on transactions, log in reason,time,email,phone
-			if($counter>=10 && $checks>=5): //about 60secs
+			if($counter>=20 && $checks>=5): //about 60secs
 			$result=$wpdb->insert( 
 					'system', 
 				array( 
@@ -443,8 +443,8 @@ function recheck_money(){
 		}//end outer if
 		else{
 			$counter++;
-				if($counter<11):
-				sleep(1);
+				if($counter<21):
+				sleep(2);
 				read_mobile_mValues();
 				endif;
 			}

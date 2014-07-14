@@ -82,15 +82,22 @@
         wp_enqueue_style( 'juicalender' );
 		wp_register_style( 'slick', get_stylesheet_directory_uri().'/css/slick.css', '', '', 'screen' );
         wp_enqueue_style( 'slick' );
+		wp_register_script( 'slickjs', get_template_directory_uri().'/js/slick.min.js', array( 'jquery' ) );
+		wp_enqueue_script( 'slickjs' );
 		wp_register_script( 'date', get_template_directory_uri().'/js/jquery.ui.datepicker.min.js', array( 'jquery' ) );
 		wp_enqueue_script( 'date' );
-		//wp_register_script( 'site', get_template_directory_uri().'/js/site.js', array( 'jquery' ) );
-		///wp_enqueue_script( 'site' );
+		wp_register_script( 'fancy', get_template_directory_uri().'/fancyBox/source/jquery.fancybox.js', array( 'jquery' ) );
+		wp_enqueue_script( 'fancy' );
+		wp_register_script( 'fancy_media', get_template_directory_uri().'/fancyBox/source/helpers/jquery.fancybox-media.js', array( 'jquery' ) );
+		wp_enqueue_script( 'fancy_media' );
+		wp_register_style( 'fancy_styles', get_stylesheet_directory_uri().'/fancyBox/source/jquery.fancybox.css', '', '1', 'screen' );
+        wp_enqueue_style( 'fancy_styles' );
+		
 		
 	}	
 	function my_theme_styles() {
 			// replace "10" with your version number; increment as you push changes
-			wp_enqueue_style('my-theme-style', get_bloginfo('template_directory') . '/style.css', false, 10);
+			wp_enqueue_style('my-theme-style', get_bloginfo('template_directory') . '/style.css', false, 11);
 		}
 	add_action('wp_print_styles', 'my_theme_styles');
 	/* ========================================================================================================================
