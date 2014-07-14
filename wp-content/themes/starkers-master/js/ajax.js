@@ -75,7 +75,7 @@ jQuery(document).ready(function($) {
 		 dataType: 'json',
 		 data: ({action : 'mobile_moneysms'}),
 		 success: function(data,state) {
-				alert("mm status");
+				//alert("mm status");
 				console.log(data);
 				}
 		 });//end ajax
@@ -910,26 +910,27 @@ $('.close,#quit').click(function(){
 					}
 				});	
 /********************************************SLIDER************************************/
-	$('.div2').show();
+	$('.div3').show();
 		$('.bxslider').slick({
-		  dots: false,autoplaySpeed: 5000, slidesToShow: 3,slidesToScroll: 1,autoplay: true, slide:'li',
+		  dots: false,autoplaySpeed: 5000, slidesToShow:5,slidesToScroll: 1,autoplay: true, slide:'li',
 		  onAfterChange:function(){ 
 				$('.focus_slider').fadeOut();
-				var $attr=$('.slick-active').next().children('div').attr('id');
-				
-				if($attr.length==0){
+				var $next=$('.slick-active').next();
+				var $attr=$next.next().children('div').attr('id');
+					if($attr.length==0){
 					$('.div1').fadeIn();
+					//alert($attr);
 					}else{
 						$("#"+$attr).fadeIn();
 						}
 					
 			},
 			responsive: [
-			{breakpoint: 1024,settings: {slidesToShow:3,slidesToScroll: 1,dots: true}
+			{
+				breakpoint: 1024,settings: {slidesToShow:4,slidesToScroll: 1,dots: false, autoplay:true, slide:'li'}
 				},
 			{
-			  breakpoint: 960,
-			  settings: {slidesToShow: 2,slidesToScroll: 1}
+			 	breakpoint: 960,settings: {slidesToShow:3,slidesToScroll: 1,dots: false, autoplay:true, slide:'li'}
 			}
 		  ]
 		  
