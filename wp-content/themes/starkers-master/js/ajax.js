@@ -385,6 +385,7 @@ function ajax_dates($id){
 				});// end ajax
 				
 			}//end peri0dic function
+			
 /*********************Long Polling******************************/
 	var t; var p;var q;	var d;		
 	function seats_longpolling(){
@@ -496,7 +497,7 @@ function ajax_dates($id){
 				
 		});	
 		
-//function for creating unique ids given to booked seats
+/*******function for creating unique class given to booked seats*********/
 	function randomString(length, chars) {
 				var result = '';
 				for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
@@ -525,7 +526,7 @@ function ajax_dates($id){
 			}
 		}		
 		
-//ajax function for updating the database
+/******ajax function for updating the database**********/
 	var $update=false;// helps seats long pull to know when to make a new seats chart call
 	function $on_click_ajax($book,$id,$state){
 		//	//alert($book+" "+$id+" "+$state);
@@ -566,9 +567,65 @@ function ajax_dates($id){
 					}
 				});// end ajax	
 			}
+/**********************************************Disclaimer Window************************************/
+	//procees button on disclaimer	
+	 $('#d_proceed').click(function(event){
+		//allow going forth
+		//hide message
+		$('.purchase_disclaimer').hide();
+		//start checking for mobile money
+		r=setTimeout( function(){results_longpolling();},5000 );
+		event.preventDefault();
+		event.stopPropagation();
+			});	
+	 //abort button on disclainer	
+	$('#abort')	.click(function(event){
+		//prevent proceeding forth
+		//go back
+		$('#prev_04').click();
+		//hide disclaimer
+		$('#payment_details').hide();
+		$('.purchase_disclaimer').hide();
+		event.preventDefault();
+		event.stopPropagation();
+			});
 
+	/**function that will be called to display the congrats messages when mobile money transaction is succesful or vice versa***/			
+	var r,money_checks=0;
+	function results_longpolling(){
+		jQuery.ajax({
+		url: MyAjax.ajaxurl,
+		type:'POST',
+		data: ({action :'read_mobile_mValues','m_checks':money_checks}),
+		dataType:'html',
+		success: function(data,state){
+		 	clearInterval(r);
+			//alert(state);
+			console.log(data);
+		 		if(data.length==0&&money_checks<6){
+						r=setTimeout( function(){results_longpolling();},3000 );
+						money_checks++;
+						console.log("counter js: "+money_checks);
+					}else{
+						//hide process
+						$('.process').hide();
+						$('#notice').hide();
+						//place new content in verify
+						$('#verify_container').html(data);
+						//make next ajax call,to send email and sms
+						process_sms_email();
+						}
+			},
+		error: function(){
+		 clearInterval(r)
+		 t=setTimeout( function(){results_longpolling();}, 10000 );
+		  }
+     	});//end ajax
+	}
+		
+		
 	// 3 minutes timer//ajax function after expire
-	$('#payment_details').on('click','#process',function(){
+	/*$('#payment_details').on('click','#process',function(){
 			jQuery.ajax({
 			url: MyAjax.ajaxurl,
 		 	type:'POST',
@@ -585,7 +642,7 @@ function ajax_dates($id){
 					process_sms_email();
 					}
 				});//end ajax
-		});
+		});*/
 
 function process_sms_email(){
 	jQuery.ajax({
@@ -689,26 +746,6 @@ $('.close,#quit').click(function(){
 		// hide contianer for confirmation ajax	
 	$('#verify_container').html("");
 		})			
-/**********************************************Disclaimer Window************************************/
-	//procees button on disclaimer	
-	 $('#d_proceed').click(function(event){
-		//allow going forth
-		//hide message
-		$('.purchase_disclaimer').hide();
-		event.preventDefault();
-		event.stopPropagation();
-			});	
-	 //abort button on disclainer	
-	$('#abort')	.click(function(event){
-		//prevent proceeding forth
-		//go back
-		$('#prev_04').click();
-		//hide disclaimer
-		$('#payment_details').hide();
-		$('.purchase_disclaimer').hide();
-		event.preventDefault();
-		event.stopPropagation();
-			});
 	/*****************************************OBTAINING CURRENT TIME********************************/
 		function $time(){
 			var $fulldate;var dt = new Date();var hr = dt.getHours() ;

@@ -9,9 +9,27 @@ function my_ajax_function(){
 		wp_enqueue_script( 'script-name', get_template_directory_uri() .'/js/ajax.js', array('jquery'));
  	 	wp_localize_script( 'script-name', 'MyAjax', array('ajaxurl' => admin_url( 'admin-ajax.php' )));
  	}
-	add_action( 'wp_enqueue_scripts', 'my_ajax_function' );
+add_action( 'wp_enqueue_scripts', 'my_ajax_function' );
+//function to check if mobile money sms are up
+function mobile_moneysms(){
+	//find latest results, results that are 10 minutes back
+	global $wpdb;
+	$current=date('Y-m-d H:i:s');
+	$newdate=strtotime('-7 min', $current);
+	$sql="select state from mobilesmschecks where time > $newdate";
+	$row=$wpdb->get_row($sql,ARRAY_A);
+		if($row){
+				$state=$row['state'];
+				$jason=json_encode(array('state'=>$state));
+				echo $jason;
+			}else{
+				//error
+				$jason=json_encode(array('state'=>'error'));
+				echo $jason;
+				}
 	
-	function get_my_dates(){
+	}
+function get_my_dates(){
 		$id=$_POST['id'];
 		movie_dates($id); 
 		die(); 
@@ -343,33 +361,39 @@ $counter=0;
 function read_mobile_mValues(){
 		global $wpdb;
 		global $counter;
+		$checks=$_POST['m_checks'];
 		$wp_session = WP_Session::get_instance();
 		$reason=$wp_session['tracker'];
 		$query="Select amount from mobilemoney where reason = '$reason'";
 		$row=$wpdb->get_row($query ,ARRAY_A);
 		$phone=$wp_session['phone'];
 		$email= $wp_session['email'];
+		
 		if(!$row) {
+			// if there is nothing in the mobile money message
 			//doing the 80% check, get all the codes in the db which might match with this one
 			recheck_money();
 			// table for not worked on transactions, log in reason,time,email,phone
+			if($counter>=10 && $checks>=5): //about 60secs
 			$result=$wpdb->insert( 
-				'system', 
-			array( 
-				'reason' =>$reason,'email'=>$email,'phone'=>$phone,
-			), 
-			array( 
-				'%s', '%s','%s') 
-				);	
-		if(!$result){
-				echo"ERROR REGISTERING SEAT IN TICKET DETAILS";
-				}
+					'system', 
+				array( 
+					'reason' =>$reason,'email'=>$email,'phone'=>$phone,
+				), 
+				array( 
+					'%s', '%s','%s') 
+					);	
+			if(!$result){
+					echo"ERROR REGISTERING SEAT IN TICKET DETAILS";
+					}
+			echo "m checks: $checks , php counter: $counter";
 			?>
-            <div class="money_fail">
+           	<div class="money_fail">
                 <p class="fail_notice"><span>Oops!!!</span> No Money Found</p>
-                <p>Chances are that the system is down, Your account credited when its up again</p>
+                <p>Chances are that the system is down, Your account will be credited when its up again</p>
             </div>
 			<?php
+			endif;
 			//return false;
 			}
 			else{
@@ -390,24 +414,26 @@ function recheck_money(){
 		$wp_session = WP_Session::get_instance();
 		$current_time=date("Y-m-d H:i:s");
 		$base_date=date('Y-m-d H:i:s', strtotime('-5 minutes'));
-		echo "we are in rechechk";
+		//echo "we are in rechechk";
+		//incase client miss typed reason code, get all reasons that have been put in the db in the past 5 mins
 		$sql="Select reason from mobilemoney where time > '$base_date'";
 		$row_reason=$wpdb->get_row($sql,ARRAY_A);
 		if($row_reason){
 			foreach($row_reason as $myreason):
 				$reason_arr[]=$myreason;
 				endforeach;
+				//testing found reasons resemblance with current reason code
 				$code=$wp_session['tracker'];
 				foreach($reason_arr as $reason){
 					$var_1 =$code;  //correct
 					//$var_2 = $reason;
-					$var_2 = (string)$reason;// from db has problem
+					$var_2 = (string)$reason;// from db 
 					similar_text($var_1, $var_2, $percent); 
 						if($percent>70){
 							//means client mistyped reason code by 2 digits, so we go on
 							$code=$reason;
 							//recall method
-							echo "in pecentage check";
+							//echo "in pecentage check";
 							$wp_session['tracker']=$reason;
 							read_mobile_mValues();
 						}//end if
@@ -415,9 +441,8 @@ function recheck_money(){
 		}//end outer if
 		else{
 			$counter++;
-				if($counter<10):
+				if($counter<11):
 				sleep(1);
-				echo  "global counter: ".$counter;
 				read_mobile_mValues();
 				endif;
 			}

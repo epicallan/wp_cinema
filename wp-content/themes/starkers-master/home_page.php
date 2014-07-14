@@ -263,7 +263,7 @@ wp_reset_query();
                                 </ul>
                                
                                <div class="shared_nav">
-                                <input type="submit" class="submit process_ticket" name="process"  id="process" value="Process Ticket">
+                           <!--     <input type="submit" class="submit process_ticket" name="process"  id="process" value="Process Ticket">--->
                               	<ul class=" clearfix" id="nav04">
 								<li><a class="bck" href="#" id="prev_04">Back</a></li>
 								</ul>    
