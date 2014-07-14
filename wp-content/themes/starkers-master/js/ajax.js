@@ -12,6 +12,10 @@ jQuery(document).ready(function($) {
 		var $total=$('#total');var $conv_val=2000;
 		var seats_id;var $post='';	var availableDates=new Array();
 		// intial field values
+		
+/***********remove # from urls*************/
+ history.pushState("", document.title, window.location.pathname + window.location.search);
+				
 	function intial_nav(){
 			$counter=0;obj.$val_adults=0;obj.$val_kids=0;purchase.$total_sum=0;
 			amount.adults_sum=0;amount.kids_sum=0;
@@ -44,151 +48,7 @@ jQuery(document).ready(function($) {
 			$(".date_right").html(date.$date+" "+date.$month);
 		}// end intial vals
 	//load ticket staff
-/****************************On clicking on a movie and getting its dates and time***************************/	
-	$(".feature_slider li").on("click", ".book", function(){
-		var $this=$(this);
-		//$on_click_ajax(null,null,0);
-		$(".ticket_container").show();
-		$(".ticket").show();
-		$('.overlay').show();
-		/*$('html,body').scrollTop(-600)*/
-		var $movie=$this.attr('name');
-		$post=$this.attr('id');
-		var $class=$this.attr('class');
-		$class_arr=$class.split(" ");
-		var $src=$class_arr[1];
-		//loading ticket image
-		$('.bg_img').html("<img src="+$src+">");
-		 movie.$name=$movie;
-		intial_vals();
-		////alert($post);
-		ajax_dates($post);
-		movie_times($post);
-		ajax_mobileMoney_status();
-		
-			});// end click
-/**********************************checking if mobile money is up*******************************/
-	function ajax_mobileMoney_status(){
-	  jQuery.ajax({
-		 url: MyAjax.ajaxurl,
-		 type:'POST',
-		 dataType: 'json',
-		 data: ({action : 'mobile_moneysms'}),
-		 success: function(data,state) {
-				//alert("mm status");
-				console.log(data);
-				}
-		 });//end ajax
-		}// end ajax_cats function	
-/**************************seting calender dates************************************************/
-function ajax_dates($id){
-	  jQuery.ajax({
-		 url: MyAjax.ajaxurl,
-		 type:'POST',
-			dataType: 'json',
-		 data: ({action : 'get_my_dates',id:$id}),
-		 success: function(data,state) {
-			
-				availableDates=Array.prototype.slice.call(data)
-				//console.log(availableDates);
-				$('#date').datepicker({ beforeShowDay: available 
-				,onSelect: function(){ 
-					var dateObject = $('#date').datepicker('getDate'); 
-					////console.log(dateObject);
-					get_date(dateObject)
-				}});
-						
-				}
-		 });//end ajax
-		}// end ajax_cats function
-	/******* gets date from calender*************/
-		function get_date(mydate){
-			var string=mydate.toString();
-			//store selected date
-			var d = string.split(' ');
-			date={$day:d[0],$date:d[2],$month:d[1],$year:d[3]}	
-			$(".num").html(date.$date);
-			$(".month").html(date.$month);
-			$(".year").html(date.$year);
-			 set_show_time_date();
-			 //create one single date
-			 date.$row=date.$date+" "+date.$month+" "+date.$year;
-			// //alert(date.$row);
-			event.preventDefault();		
-			}
-		/***************pops calender************/
-		$('.myframe').on("click", "#calendar", function(event){
-			if($('.showdates').is(":visible")){
-				$('.showdates').hide();
-				}else{
-					$('.showdates').show();
-					
-					}
-			event.preventDefault();
-			event.stopPropagation();
-				});	
-		//sets some dates available others unavailable
-		function available(date) {
-		  dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
-		  if ($.inArray(dmy, availableDates) != -1) {
-			return [true, "","Available"];
-		  } else {
-			return [false,"","unAvailable"];
-		  }
-		}
-
-	/******************ajax function to get time*************/
-	 function movie_times($post_id){
-		// //alert($post_id);
-		 jQuery.ajax({
-		 url: MyAjax.ajaxurl,
-		 type:'POST',
-		// dataType: 'html',
-		 data: ({action : 'get_my_times',id:$post_id}),
-		success: function(data,state) {
-			 	////alert(state);
-			 	$('.showtimes').html(data)	
-				}
-		 });//end ajax
-		}
-		//pops up times
-	$('.myframe').on("click", "#clock", function(event){
-			if($('.showtimes').is(":visible")){
-				$('.showtimes').hide();
-				}else{
-					$('.showtimes').show();
-					}
-			event.preventDefault();
-			event.stopPropagation();
-				});
-	
-	//selecting time
-		$("ul.showtimes").on("click", ".time_vals", function(event){
-			//$('.ticket_nav#date_error').hide();
-			var $this=$(this);
-			//obtaining cinema room from time href
-			var $cinema_room=$this.attr('href');
-			var $room=$cinema_room.substr(1);
-			var $time=$this.attr('id');
-			cinema_room.$name=$room;
-			show_time.$current=$time;
-			$('.current_time').html($time);
-			time_bool=true;
-			//enntering time in left panel
-			set_show_time_date();
-			//calling function  to send table name
-			send_table_name()
-			event.preventDefault();
-			});
-		// setitng date and time in the left container
-		function set_show_time_date(){
-			$('.showroom').html(cinema_room.$name);
-			$('.showtime').html(show_time.$current);
-			$('.date').html(date.$current);
-			$(".date_right").html(date.$date+" "+date.$month);
-			$('.movie_name').html(movie.$name);
-		}
-	/********************************************TICKETING AMOUNT********************************************/		
+/********************************************TICKETING AMOUNT********************************************/		
 	// function computing amounts
 		function compute_conv(){
 			var conv_default=2000;
@@ -332,14 +192,171 @@ function ajax_dates($id){
 			event.stopPropagation();
 		});		
 		
-/**************************SEATS CHART*******************************************************************/
-	//obtain table name, get movie,date(day,date,year),time(24hr)
+	
+	
+/****************************On clicking on a movie and getting its dates and time***************************/	
+	$(".feature_slider li").on("click", ".book", function(){
+		var $this=$(this);
+		//$on_click_ajax(null,null,0);
+		$(".ticket_container").show();
+		$(".ticket").show();
+		$('.overlay').show();
+		/*$('html,body').scrollTop(-600)*/
+		var $movie=$this.attr('name');
+		$post=$this.attr('id');
+		var $class=$this.attr('class');
+		$class_arr=$class.split(" ");
+		var $src=$class_arr[1];
+		//loading ticket image
+		$('.bg_img').html("<img src="+$src+">");
+		 movie.$name=$movie;
+		intial_vals();
+		////alert($post);
+		ajax_dates($post);
+		movie_times($post);
+		ajax_mobileMoney_status();
 		
+			});// end click
+/**********************************checking if mobile money is up*******************************/
+	function ajax_mobileMoney_status(){
+	  jQuery.ajax({
+		 url: MyAjax.ajaxurl,
+		 type:'POST',
+		 dataType: 'json',
+		 data: ({action : 'mobile_moneysms'}),
+		 success: function(data,state) {
+				//alert("mm status");
+				console.log(data);
+				}
+		 });//end ajax
+		}// end ajax_cats function	
+/**************************seting calender dates************************************************/
+var selected_date=false;
+var selected_time=false;
+function ajax_dates($id){
+	  jQuery.ajax({
+		 url: MyAjax.ajaxurl,
+		 type:'POST',
+			dataType: 'json',
+		 data: ({action : 'get_my_dates',id:$id}),
+		 success: function(data,state) {
+			
+				availableDates=Array.prototype.slice.call(data)
+				//getting calender dates
+				$('#date').datepicker({ beforeShowDay: available 
+				,onSelect: function(){ 
+					var dateObject = $('#date').datepicker('getDate'); 
+					//getting date
+					get_date(dateObject)
+					selected_date=true;
+					if(selected_time){
+						//calling function  to send table name
+						send_table_name()
+						}
+					//set boolean
+				}});
+						
+				}
+		 });//end ajax
+		}// end ajax_cats function
+	/******* gets date from calender*************/
+		function get_date(mydate){
+			var string=mydate.toString();
+			//store selected date
+			var d = string.split(' ');
+			date={$day:d[0],$date:d[2],$month:d[1],$year:d[3]}	
+			$(".num").html(date.$date);
+			$(".month").html(date.$month);
+			$(".year").html(date.$year);
+			 set_show_time_date();
+			 //create one single date
+			 date.$row=date.$date+" "+date.$month+" "+date.$year;
+			// //alert(date.$row);
+			event.preventDefault();		
+			}
+		/***************pops calender************/
+		$('.showdates').show(); // change styles
+		/*$('.myframe').on("click", "#calendar", function(event){
+			if($('.showdates').is(":visible")){
+				$('.showdates').hide();
+				}else{
+					$('.showdates').show();
+					
+					}
+			event.preventDefault();
+			event.stopPropagation();
+				});	*/
+		//sets some dates available others unavailable
+		function available(date) {
+		  dmy = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear();
+		  if ($.inArray(dmy, availableDates) != -1) {
+			return [true, "","Available"];
+		  } else {
+			return [false,"","unAvailable"];
+		  }
+		}
+
+	/******************ajax function to get time*************/
+	 function movie_times($post_id){
+		// //alert($post_id);
+		 jQuery.ajax({
+		 url: MyAjax.ajaxurl,
+		 type:'POST',
+		// dataType: 'html',
+		 data: ({action : 'get_my_times',id:$post_id}),
+		success: function(data,state) {
+			 	////alert(state);
+			 	$('.showtimes').html(data)	
+				}
+		 });//end ajax
+		}
+		//pops up times
+	$('.myframe').on("click", "#clock", function(event){
+			if($('.showtimes').is(":visible")){
+				$('.showtimes').hide();
+				}else{
+					$('.showtimes').show();
+					}
+			event.preventDefault();
+			event.stopPropagation();
+				});
+	
+	/********selecting time and getting the name of the table for particular movie****************/
+		$("ul.showtimes").on("click", ".time_vals", function(event){
+			//$('.ticket_nav#date_error').hide();
+			var $this=$(this);
+			//obtaining cinema room from time href
+			var $cinema_room=$this.attr('href');
+			var $room=$cinema_room.substr(1);
+			var $time=$this.attr('id');
+			cinema_room.$name=$room;
+			show_time.$current=$time;
+			$('.current_time').html($time);
+			time_bool=true;
+			//enntering time in left panel
+			set_show_time_date();
+			selected_time=true;
+			if(selected_date){
+				//calling function  to send table name
+				send_table_name()
+					}
+			event.preventDefault();
+			});
+		// setitng date and time in the left container
+		function set_show_time_date(){
+			$('.showroom').html(cinema_room.$name);
+			$('.showtime').html(show_time.$current);
+			$('.date').html(date.$current);
+			$(".date_right").html(date.$date+" "+date.$month);
+			$('.movie_name').html(movie.$name);
+		}
+	/**************************SEATS CHART*******************************************************************/
+	//obtain table name, get values that make it at the front end and then send it(movie,date,time)
 		function send_table_name(){
 			jQuery.ajax({
 			  url: MyAjax.ajaxurl,
 		 	  type:'POST',
-			 dataType: "json",
+			  dataType: "json",
 			  data: ({action : 'seats_table_name','name':movie.$name,'time':show_time.$current, 'date_row': date.$row }),
 			  success: function(data,state){
 				 	//bool to allow**
@@ -858,9 +875,9 @@ $('.close,#quit').click(function(){
 		if($('.showtimes').is(":visible")){
 				$('.showtimes').hide();
 				}
-			if($('.showdates').is(":visible")){
+		/*	if($('.showdates').is(":visible")){
 				$('.showdates').hide();
-				}
+				}*/
 			});
 		$('.frame').on("click", "#clock", function(event){
 			event.preventDefault();
@@ -887,7 +904,7 @@ $('.close,#quit').click(function(){
 			$('.showtimes').fadeOut('fast');
 			
 			});	
-		$('.frame').on("click", ".showdates a", function(event){
+	/*	$('.frame').on("click", ".showdates a", function(event){
 			$turn_off_2=true;
 			
 			if($turn_off_1 && $turn_off_2 ){
@@ -899,29 +916,21 @@ $('.close,#quit').click(function(){
 				}
 			
 			$('.showdates').fadeOut('fast');
-			});	
-		$('.frame').on("click", "#calendar", function(event){
-			event.preventDefault();
-			event.stopPropagation();
-			if($('.showdates').is(":visible")){
-				$('.showdates').hide();
-				}else{
-					$('.showdates').show();
-					}
-				});	
+			});	*/
+		
 /********************************************SLIDER************************************/
 	$('.div3').show();
 		$('.bxslider').slick({
-		  dots: false,autoplaySpeed: 5000, slidesToShow:5,slidesToScroll: 1,autoplay: true, slide:'li',
+		  dots: false,autoplaySpeed: 5000, slidesToShow:5,slidesToScroll: 1,autoplay: false, slide:'li',
 		  onAfterChange:function(){ 
 				$('.focus_slider').fadeOut();
 				var $next=$('.slick-active').next();
-				var $attr=$next.next().children('div').attr('id');
+				var $attr=$next.next().children('div').attr('attr');
 					if($attr.length==0){
 					$('.div1').fadeIn();
 					//alert($attr);
 					}else{
-						$("#"+$attr).fadeIn();
+						$("."+$attr).fadeIn();
 						}
 					
 			},
@@ -936,7 +945,30 @@ $('.close,#quit').click(function(){
 		  
 		});
 					
-				
+/************************form validation*************************************/
+$("#contacts").validate({
+	rules: {
+        phone: {
+			required: true,digits: true,maxlength:10,minlength: 10,
+				 },
+	phone2:{
+		 required: true,digits: true,minlength: 13,maxlength: 13
+		},
+      email:{required: true,email: true
+  		}  
+    },
+	messages: {
+			  phone:{	required: "Required input",
+						minlength: jQuery.format("<p>Please Enter at least <br>{0} characters <p>"),
+						maxlength: jQuery.format("<p>You have entered more than <br>{0} characters <p>"),
+				 		},
+			 email:{
+						required:  "Required input",
+						email: "<p>Please Enter a valid <br> email address <p>"
+				}  
+			}
+  
+ });						
 							
 /*******************************************Navigation next prev**************************************************************/
 

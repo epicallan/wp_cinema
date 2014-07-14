@@ -72,6 +72,7 @@ endwhile;
 
 wp_reset_query();  
 ?>
+
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header') ); ?>
 
     <div class="ticket_container">
@@ -103,7 +104,9 @@ wp_reset_query();
                                             <li><a id="calendar" href="#">calendar</a></li>
                                           </ul>
                                         </div>
-                                <ul class="showdates"><li><input type="text" name="date" id="date" readonly="readonly" size="12" class="calender_input"/></li></ul>
+                                <ul class="showdates">
+                               		 <li><input type="text" name="date" id="date" readonly="readonly" size="12" class="calender_input"/></li>
+                                </ul>
                                    <div class="time fleft">
                                         <h3>showtime</h3>
                                         <ul>
@@ -378,7 +381,7 @@ wp_reset_query();
 					$date=$startdate[$key];
 					$i++;
 					echo "<li class= \"slides first\" id=\"slide$i\" > <img src=\"$src\" alt=\"$movie\">
-							<div class=\"focus_slider div$i\" id=\"$movie$i\">
+							<div class=\"focus_slider div$i $movie$i\" attr=\"$movie$i\">
 							<ul class=\"focus_details\" id=\"$key$movie\" >
 								<li class='fix_bck'>
 									<div class='focus'>
