@@ -27,8 +27,10 @@ function mobile_moneysms(){
 				$jason=json_encode(array('state'=>'error'));
 				echo $jason;
 				}
-	
+	die(); 
 	}
+add_action("wp_ajax_mobile_moneysms", "mobile_moneysms");
+
 function get_my_dates(){
 		$id=$_POST['id'];
 		movie_dates($id); 

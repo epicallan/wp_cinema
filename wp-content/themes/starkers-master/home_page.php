@@ -373,6 +373,8 @@ wp_reset_query();
 					$i=0;
 				foreach($images as $key => $src){
 			 		$movie=$store_names[$key];
+					//remove spaces betwwen movie names
+					$movie=str_replace(" ","",$movie);
 					$date=$startdate[$key];
 					$i++;
 					echo "<li class= \"slides first\" id=\"slide$i\" > <img src=\"$src\" alt=\"$movie\">
@@ -398,5 +400,11 @@ wp_reset_query();
 				 ?>
                   </ul> 
 				</div>
+<<<<<<< HEAD
 	</div>
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer') ); ?>
+=======
+               </div>
+           </div>
+<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer') ); ?>
+>>>>>>> FETCH_HEAD
