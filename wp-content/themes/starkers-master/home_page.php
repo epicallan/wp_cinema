@@ -383,8 +383,6 @@ wp_reset_query();
 					$i++;
 					echo "<li class= \"slides first\" id=\"slide$i\" > <img src=\"$src\" alt=\"$movie\">
 							<div class=\"focus_slider div$i $movie$i\" attr=\"$movie$i\">
-							<ul class=\"focus_details\" id=\"$key$movie\" >
-								<li class='fix_bck'>
 									<div class='focus'>
 											<ul>
 												<li class='i_t_s'>
@@ -397,8 +395,6 @@ wp_reset_query();
 													<li class='buy'><a href='#' name=\"$movie\" title='buy' class =\"book $src\" id=\"$ids[$key]\" ><span class='ticket_icon'></span>buy ticket</a></li>
 												</ul>
 											</div>
-									</li>
-								</ul>
 							</div>";
 					}//end for
 				 ?>

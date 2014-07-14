@@ -113,7 +113,7 @@ img#bkg{min-width:100%;}
 
 /* FEATURE */
 
-.feature{width:45%;height:40%;position: absolute; top:50%;left:50%;margin-left:-22.5%;}
+.feature{width:45%;height:50%;position: absolute; top:50%;left:50%;margin-left:-22.5%;overflow: hidden;}
 /* 2.0 feature box */
 .feature_box{z-index: 3px;width: 80%;position:relative;top:0px;left:50%;margin-left:-40%;font-family: din;background-color: #e93a3a;}
 .feature_filter{padding-top: 1%;text-align:center;margin-bottom: 46%;}
@@ -125,7 +125,9 @@ a#all_movies{color:#fff;font-size: 13px;margin-left:640px;}
 .feature_slider {width: 100%;position: absolute;top: 15%;height: 274px;}
 .feature_slider a:focus img{transform: scale(1.2,1.2)}
 .dte a:focus img{transform: scale(1.2,1.2)}
-/* 3.01 now showing */
+/* 3.01 now showing 
+.focus_slider img{transform:scale(1.3, 1.3);}*/
+
 .nowshowing{
 	display:none;
 	position:absolute;
@@ -179,21 +181,13 @@ a#all_movies{color:#fff;font-size: 13px;margin-left:640px;}
 
 
 /* feature state*/
+#slide3{position:relative;z-index:5;}
+#slide3 img{transform:scale(1.3,1.3);}
 .fix_bck{
 	background:#e93a3a;
 	}
-.focus {
-/* display: none; */
-z-index: 5;
-position: relative;
-/* bottom: 6em; */
-height: 7em;
-background: -moz-linear-gradient(top, rgba(0,0,0,0) -55%, rgba(0,0,0,1) 120%);
-background: -webkit-linear-gradient(top, rgba(0,0,0,0) -55%,rgba(0,0,0,1) 120%);
-background: -o-linear-gradient(top, rgba(0,0,0,0) -55%,rgba(0,0,0,1) 120%);
-background: -ms-linear-gradient(top, rgba(0,0,0,0) -55%,rgba(0,0,0,1) 120%);
-background: linear-gradient(top, rgba(0,0,0,0) -55%,rgba(0,0,0,1) 120%);
-background-repeat: no-repeat;
+.focus {/* display: none; */z-index: 5;position: absolute;/* bottom: 6em; */height: 7em;width:295px;text-align:center;padding-top: 24.5em;top:-3.55em;margin-left:-15%;background: -moz-linear-gradient(top, rgba(0,0,0,0) -55%, rgba(0,0,0,1) 120%);background: -webkit-linear-gradient(top, rgba(0,0,0,0) -55%,rgba(0,0,0,1) 120%);background: -o-linear-gradient(top, rgba(0,0,0,0) -55%,rgba(0,0,0,1) 120%);background: -ms-linear-gradient(top, rgba(0,0,0,0) -55%,rgba(0,0,0,1) 120%);background: linear-gradient(top, rgba(0,0,0,0) -55%,rgba(0,0,0,1) 120%);background-repeat: no-repeat;
+
 }
 .i_t_s{
 	margin-bottom: 20px;
