@@ -9,6 +9,7 @@
 	$args = array( 'post_type' => 'attachment',  'numberposts' => -1,  'post_status' => null, 'post_parent' => $post->ID );
     $attachments = get_posts( $args );
      if ( $attachments ) {
+    
         foreach ( $attachments as $attachment ) {
          $bck=$attachment->guid;
 			}
