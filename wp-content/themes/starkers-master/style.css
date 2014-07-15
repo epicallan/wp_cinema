@@ -1219,3 +1219,12 @@ opacity: 0;
 height: 18px;
 width: 26px;
 }
+
+/* #1280-1500 Grid
+================================================== */
+
+@media only screen and (min-width: 1280px) and (max-width:1950px){
+	
+.feature{height:70%;}
+
+}
