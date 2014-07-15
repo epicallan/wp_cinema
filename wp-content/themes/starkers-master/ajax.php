@@ -38,8 +38,8 @@ function get_my_dates(){
 		}
 	//add_action("wp_ajax_nopriv_get_my_dates", "get_my_dates");
 	add_action("wp_ajax_get_my_dates", "get_my_dates");
-/// function for getting dates and time of a particular movie
-	function movie_dates($id){
+// function for getting dates and time of a particular movie
+function movie_dates($id){
 		$cinema= get_post_meta( $id, 'movie_select', true );
  		//getting movie start date
  		$start= get_post_meta( $id, 'movie_start_date', true ); //2014 07 10  , 2014 07 15
@@ -97,6 +97,17 @@ function calender($arr){
 				}
 
 		}// end function	
+		
+/*******get movie trailer*********************************/
+function get_movie_trailer(){
+	//get trailer url
+	$url=$_POST['url'];
+	$embed_code = wp_oembed_get($url,array('width'=>500)); 	
+	echo $embed_code;	
+	die();
+	}		
+add_action("wp_ajax_get_movie_trailer", "get_movie_trailer");
+	
 /****************seats table name****************/
 	function seats_table_name(){
 		//get data

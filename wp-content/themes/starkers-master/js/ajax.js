@@ -16,13 +16,7 @@ jQuery(document).ready(function($) {
 /***********remove # from urls*************/
  history.pushState("", document.title, window.location.pathname + window.location.search);
 		/***********fancybox**********/
-		$('.fancybox-media').fancybox({
-		openEffect  : 'none',
-		closeEffect : 'none',
-		helpers : {
-			media : {}
-		}
-	});	
+		
 	
 /*************************************intialisaing some variables***************/
 			function intial_nav(){
@@ -57,6 +51,24 @@ jQuery(document).ready(function($) {
 			$(".date_right").html(date.$date+" "+date.$month);
 		}// end intial vals
 	//load ticket staff
+/***************************ajax play trailer***********************/
+	$('.bxslider').on('click','.trailer', function(){
+		$trailer=$(this).children('a');
+		 $url=$trailer.attr('class');
+		 alert($url);
+		 jQuery.ajax({
+		 url: MyAjax.ajaxurl,
+		 type:'POST',
+		 dataType: 'html',
+		 data: ({action : 'get_movie_trailer',url:$url}),
+		success: function(data,state) {
+			alert(state);
+			 	$('.feature_slider').html(data);
+				
+				}
+		 });//end ajax
+		
+		})	
 /********************************************TICKETING AMOUNT********************************************/		
 	// function computing amounts
 		function compute_conv(){
