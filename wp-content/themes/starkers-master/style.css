@@ -952,6 +952,9 @@ width: 26px;
 
 @media only screen and (min-width: 1280px) and (max-width:1950px){
 	
-.feature{height:70%;}
+.feature{height:70%;width:70%;top:40%;margin-left:-35%;}
+.slick-slide img{width:100%;}
+.focus{height:7em;padding-top:20.5em;width:260px;top:-3em;}
+a#all_movies {margin-left: 600px;}
 
 }
