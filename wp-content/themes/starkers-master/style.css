@@ -84,7 +84,7 @@ a{color:black; text-decoration: none}
 a:hover{text-decoration: underline}
     
     /* STRUCTURE*/
-html{height:100%;}    
+html{height:100%;overflow:hidden;}    
 body{font-family:helvetica;font-size: 16px;width:100%;height:100%; background-color:black;}
 .container{width: 100%;}
 #intial_home{width:100%;position:relative;
@@ -113,9 +113,9 @@ img#bkg{min-width:100%;}
 
 /* FEATURE */
 
-.feature{width:45%;height:50%;position: absolute; top:50%;left:50%;margin-left:-22.5%;overflow: hidden;}
+.feature{width:45%;height:47%;position:absolute; top:50%;left:50%;margin-left:-22.5%;overflow: hidden;}
 /* feature box */
-.feature_box{z-index: 3px;width: 80%;position:relative;top:0px;left:50%;margin-left:-40%;font-family: din;background-color: #e93a3a;}
+.feature_box{z-index: 3px;width: 80%;position:relative;top:0px;left:50%;margin-left:-40%;font-family: din;background-color: #e93a3a;padding-bottom:1%;}
 .feature_filter{padding-top: 1%;text-align:center;margin-bottom: 46%;}
 .feature_filter li{display:inline-block;margin-right: 20px;}
 .feature_filter a{color:#fff;font-size: 14px;margin: auto;margin-top: 6px;margin-bottom: 355px;}
@@ -172,7 +172,7 @@ li.filter_nav{padding:1% 0px;text-align:center;font-family: DIN;color:#959595;}
 .movies img{min-width:100%;height:auto;}
 
 /* ticket */
-.ticket_container{ height:100%;position:relative;z-index:99;display:none;}
+.ticket_container{width:100%;height:100%;position:absolute;z-index:99;display:none;}
 .ticket{width: 908px;height:338px; margin:0px auto; position: relative;opacity: 0.9;font-size: 12px; font-family:din; display:none;left:50%;margin-left:-17.5%;top:50%; margin-top:-169px; text-transform:uppercase;} 
 .ticket li{display:block;}
 
