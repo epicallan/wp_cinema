@@ -172,8 +172,8 @@ li.filter_nav{padding:1% 0px;text-align:center;font-family: DIN;color:#959595;}
 .movies img{min-width:100%;height:auto;}
 
 /* ticket */
-.ticket_container{ height:100%;background-color: rgba(0, 0, 0, 0.9);position:relative;z-index:99;display:none;}
-.ticket{width: 908px;height:338px; margin:0px auto; position: relative;opacity: 0.9;font-size: 12px; font-family:din; display:none;left:50%;margin-left:-17.5%;top:5%; text-transform:uppercase;} 
+.ticket_container{ height:100%;position:relative;z-index:99;display:none;}
+.ticket{width: 908px;height:338px; margin:0px auto; position: relative;opacity: 0.9;font-size: 12px; font-family:din; display:none;left:50%;margin-left:-17.5%;top:50%; margin-top:-169px; text-transform:uppercase;} 
 .ticket li{display:block;}
 
 /*details*/
