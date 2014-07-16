@@ -77,8 +77,8 @@ wp_reset_query();
 
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header') ); ?>
 
-    <div class="ticket_container">
-		<ul class="ticket">
+    <div class="ticket_container clearfix">
+		<ul class="ticket clearfix">
     <li class="details fleft">
         <ul id="tabs">
         <ul class="breadcrumbs">
@@ -92,8 +92,8 @@ wp_reset_query();
                         <li><a href="#phone_email_li">3. Make your Payment</a></li>
                         </ul>
               <li class="content clearfix" id="tab1">
-                                <div class="myframe">
-                                	<div class="date fleft">
+                                <div class="myframe fleft">
+	                                <div class="date fleft">
                                        <h3>date</h3>
                                         <ul class="day">
                                             <li class="num"><?php echo $day?></li>
@@ -107,17 +107,17 @@ wp_reset_query();
                                             <li><a id="calendar" href="#">calendar</a></li>
                                           </ul>
                                         </div>
-                                <ul class="showdates">
+									<ul class="showdates">
                                		 <li><input type="text" name="date" id="date" readonly="readonly" size="12" class="calender_input"/></li>
                                 </ul>
-                                   <div class="time fleft">
+	                                <div class="time fleft">
                                         <h3>showtime</h3>
                                         <ul>
                                         <li><h1 class='current_time'><?php echo $time?></h1></li>
                                         <li><a id="clock" href="#">showtimes</a></li>
                                         </ul>
                                       </div> 
-                                   <ul class="showtimes"></ul>
+	                                <ul class="showtimes"></ul>
                                 </div>
                                 <div class="tickets fleft">
                                         <h3>tickets</h3>
@@ -140,8 +140,7 @@ wp_reset_query();
                                                 </ul>
                                             </li>
                                         </ul>
-                                        
-              
+                                 </div>
                                 <div class="costing fleft">
                                     <h3>pricing</h3>
                                     <table>
@@ -162,8 +161,7 @@ wp_reset_query();
                                             <td class="second_total" id="total"></td>
                                         </tr>
                                     </table>
-                                </div>
-                                 </div>   
+                                </div>   
                                 <ul class="ticket_nav clearfix" >
                               		<li class='error_container'></li>
                                     <li><a class="reset" id="reset_01" href="#">reset</a></li>

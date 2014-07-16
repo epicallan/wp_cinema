@@ -85,7 +85,7 @@ a:hover{text-decoration: underline}
     
     /* STRUCTURE*/
     
-body {font-family:helvetica;font-size: 16px;width:100%;height:100%;line-height:1.2em; background-color:black;}
+body {font-family:helvetica;font-size: 16px;width:100%;height:100%; background-color:black;}
 .container{width: 100%;}
 #intial_home{width:100%;position:relative;
 }
@@ -114,43 +114,26 @@ img#bkg{min-width:100%;}
 /* FEATURE */
 
 .feature{width:45%;height:50%;position: absolute; top:50%;left:50%;margin-left:-22.5%;overflow: hidden;}
-/* 2.0 feature box */
+/* feature box */
 .feature_box{z-index: 3px;width: 80%;position:relative;top:0px;left:50%;margin-left:-40%;font-family: din;background-color: #e93a3a;}
 .feature_filter{padding-top: 1%;text-align:center;margin-bottom: 46%;}
 .feature_filter li{display:inline-block;margin-right: 20px;}
 .feature_filter a{color:#fff;font-size: 14px;margin: auto;margin-top: 6px;margin-bottom: 355px;}
 a#all_movies{color:#fff;font-size: 13px;margin-left:640px;}
-/* 3.0 feature slider */
+
+/* feature slider */
 /*allan changed*/
 .feature_slider {width: 100%;position: absolute;top: 15%;height: 274px;}
 .feature_slider a:focus img{transform: scale(1.2,1.2)}
 .dte a:focus img{transform: scale(1.2,1.2)}
-/* 3.01 now showing 
+/*now showing 
 .focus_slider img{transform:scale(1.3, 1.3);}*/
-
-.nowshowing{
-	display:none;
-	position:absolute;
-	left:50px;
-}
-.nowshowing li{
-	display: inline-block;
-}
-/* 3.01 coming soon */
-.comingsoon{
-	/*display:none;*/
-	position:absolute;
-	left:50px;
-}
-.comingsoon li{
-	display: inline-block;
-}
-#dte1, #dte2, #dte3, #dte4, #dte5{
-	width:114px;
-	height: 37px;
-	position: absolute;
-	top:20px;	
-}
+.nowshowing{display:none;position:absolute;left:50px;}
+.nowshowing li{display: inline-block;}
+/* coming soon */
+.comingsoon{/*display:none;*/position:absolute;left:50px;}
+.comingsoon li{display: inline-block;}
+#dte1, #dte2, #dte3, #dte4, #dte5{width:114px;height: 37px;position: absolute;top:20px;	}
 #dte1{left:124px;}
 #dte2{left:355px}
 #dte3{left:585px}
@@ -158,336 +141,85 @@ a#all_movies{color:#fff;font-size: 13px;margin-left:640px;}
 #dte5{right:-3px}
 
 /* feature slider navigation */
-#prvs,#nxt{
-	position:absolute;
-	top:120px;
-	width:24px;
-	height:105px;
-	text-indent: -999999px;
-	background-repeat:no-repeat;
-}
-#prvs{
-	background-image: url("../starkers-master/images/homer/prvs.png");
-	left:-50px;	
-}
-.pointer{
-	background-image: url("../starkers-master/images/pointer.png");
-	left:-50px;	
-}
-#nxt{
-	background-image: url("../starkers-master/images/homer/nxt.png");
-	right:-50px;
-}
-
+#prvs,#nxt{position:absolute;top:120px;width:24px;height:105px;text-indent: -999999px;background-repeat:no-repeat;}
+#prvs{background-image: url("../starkers-master/images/homer/prvs.png");left:-50px;	}
+.pointer{background-image: url("../starkers-master/images/pointer.png");left:-50px;	}
+#nxt{background-image: url("../starkers-master/images/homer/nxt.png");right:-50px;}
 
 /* feature state*/
 #slide3{position:relative;z-index:5;}
 #slide3 img{transform:scale(1.3,1.3);}
-.fix_bck{
-	background:#e93a3a;
-	}
-.focus {/* display: none; */z-index: 5;position: absolute;/* bottom: 6em; */height: 7em;width:295px;text-align:center;padding-top: 24.5em;top:-3.55em;margin-left:-15%;background: -moz-linear-gradient(top, rgba(0,0,0,0) -55%, rgba(0,0,0,1) 120%);background: -webkit-linear-gradient(top, rgba(0,0,0,0) -55%,rgba(0,0,0,1) 120%);background: -o-linear-gradient(top, rgba(0,0,0,0) -55%,rgba(0,0,0,1) 120%);background: -ms-linear-gradient(top, rgba(0,0,0,0) -55%,rgba(0,0,0,1) 120%);background: linear-gradient(top, rgba(0,0,0,0) -55%,rgba(0,0,0,1) 120%);background-repeat: no-repeat;
+.fix_bck{background:#e93a3a;}
+.focus {/* display: none; */z-index: 5;position: absolute;/* bottom: 6em; */height: 7em;width:295px;text-align:center;padding-top: 24.5em;top:-3.55em;margin-left:-15%;background: -moz-linear-gradient(top, rgba(0,0,0,0) -55%, rgba(0,0,0,1) 120%);background: -webkit-linear-gradient(top, rgba(0,0,0,0) -55%,rgba(0,0,0,1) 120%);background: -o-linear-gradient(top, rgba(0,0,0,0) -55%,rgba(0,0,0,1) 120%);background: -ms-linear-gradient(top, rgba(0,0,0,0) -55%,rgba(0,0,0,1) 120%);background: linear-gradient(top, rgba(0,0,0,0) -55%,rgba(0,0,0,1) 120%);background-repeat: no-repeat;}
+.i_t_s{margin-bottom: 20px;}
+.synopsis{display:inline-block;margin: 0px auto;width:17px;height:32px;text-indent: -999999px;background-image:url("../starkers-master/images/synopsis.png");background-repeat: no-repeat;margin-right: 50px;cursor: pointer;}
+.trailer{display:inline-block;margin: 0px auto;width:40px;height:39px;text-indent: -999999px;background-image:url("../starkers-master/images/play.png");background-repeat: no-repeat;cursor: pointer;margin-right: 50px}
+.share{display:inline-block;margin: 0px auto;width:40px;height:39px;text-indent: -999999px;background-image:url("../starkers-master/images/share.png");cursor: pointer;background-repeat: no-repeat;}
+.buy{display:block;font-family: din;vertical-align: middle;	}
+.buy a{font-size: 20px;color:#e93a3a;text-transform: uppercase;text-align: center;}
+.ticket_icon{display:inline-block;width:30px;height:27px;background-image: url("../starkers-master/images/ticket.png");background-repeat: no-repeat;margin-right: 5px;}
 
-}
-.i_t_s{
-	margin-bottom: 20px;
-	margin-left:35px;
-}
-.synopsis{
-	display:inline-block;
-	margin: 0px auto;
-	width:17px;
-	height:32px;
-	text-indent: -999999px;
-	background-image:url("../starkers-master/images/synopsis.png");
-	background-repeat: no-repeat;
-	margin-right: 50px;
-	cursor: pointer;
-}
-.trailer{
-	display:inline-block;
-	margin: 0px auto;
-	width:40px;
-	height:39px;
-	text-indent: -999999px;
-	background-image:url("../starkers-master/images/play.png");
-	background-repeat: no-repeat;
-	cursor: pointer;
-	margin-right: 50px
-}
-.share{
-	display:inline-block;
-	margin: 0px auto;
-	width:40px;
-	height:39px;
-	text-indent: -999999px;
-	background-image:url("../starkers-master/images/share.png");
-	cursor: pointer;
-	background-repeat: no-repeat;
-}
-.buy{
-	display:block;
-	font-family: din;
-	vertical-align: middle;
-	margin-left:50px;
-	
-}
-.buy a{
-	font-size: 20px;
-	color:#e93a3a;
-	text-transform: uppercase;
-}
-.ticket_icon{
-	display:inline-block;
-	width:30px;
-	height:27px;
-	background-image: url("../starkers-master/images/ticket.png");
-	background-repeat: no-repeat;
-	margin-right: 5px;
-}
-
-#ticket_icon{
-	display:inline-block;
-	width:30px;
-	height:27px;
-	background-image: url("../starkers-master/images/ticket.png");
-	background-repeat: no-repeat;
-	margin-right: 5px;
-}
-
+#ticket_icon{display:inline-block;width:30px;height:27px;background-image: url("../starkers-master/images/ticket.png");background-repeat: no-repeat;margin-right: 5px;}
 
 /* moviesPAGE */
-li.moviegrid{
-	width:80%;
-	float: right;
-	line-height: 0;
-	}
+li.moviegrid{width:80%;float: right;line-height: 0;}
  
-li.filter_nav{
-	padding:1% 0px;
-	text-align:center;
-	font-family: DIN;
-	color:#959595;
-}
+li.filter_nav{padding:1% 0px;text-align:center;font-family: DIN;color:#959595;}
 
-.filters li{
-	display:inline;
-	padding:5px 10px;
-}
+.filters li{display:inline;padding:5px 10px;}
 
-.movies li{
-	display: inline-block;
-	min-width: 368px;
-	width:24%;
-}
-.movies img{
-	min-width:100%;
-	height:auto;
-}
+.movies li{display: inline-block;min-width: 368px;width:24%;}
+.movies img{min-width:100%;height:auto;}
 
 /* ticket */
-.ticket_container{
-	width: 1609px;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.9);
-	float: right;
-	position: relative;
-	bottom: 200px;
-	left: 52px;
-	z-index:99;
-	display:hidden;
-}
-
-. ticket li{
-	display:block;
-}
-.details{
-	width: 350px;
-height: 318px;
-	padding: 10px;
-	font-size: 9px;
-	background-color: #fff;
-	background-image: url("../starkers-master/images/detailz.png"); 
-}
-.crumbs_nav li{
-	display:inline-block;
-	margin-left: 8px;
-}
-.breadcrumbs{
-	margin-bottom: 20px;
-	/*margin-left:12px;*/
-	font-family: helvetica;
-	font-size:9px;
-	text-align: center;
-}
-li.breadcrumbs h3{
-	font-size: 12px
-	margin:0px auto;
-	margin-bottom: 10px
-}
-.content{padding-top:10px;margin-left:15px;}
-.date{
-	width:130px;
-	margin: 0 30px 0 0px;
-	font-size: 12px
-}
-.time{
-	width:120px;
-	font-size: 12px
-}
-.time li{
-	display:inline-block;
-}
-.day li{
-	display:inline-block;
-	font-family: bebas neue;
-}
-.num{
-	font-size: 52px;
-}
-#mm li{
-	display:block;
-}
-li.month{
-	font-size: 24px;
-}
-li.year{
-	font-size: 18px;
-}
-.time h1{
-	font-size: 52px;
-	font-family: bebas neue;
-}
-.tickets {
-	position: absolute;
-top: 165px;
-left: 20px;
-
-
-}
-.ticket h3{
-	margin-bottom: 5px;
-	font-size: 12px;
-}
+.ticket_container{width: 35%;height: 100%;background-color: rgba(0, 0, 0, 0.9);position: relative;z-index:99;display:hidden;}
+.ticket{width:100%;position: absolute;opacity: 0.9;display:none;left:50%;margin-left:-17.5%;top:5%; text-transform:uppercase;} 
+.ticket li{display:block;}
+.details{width: 39.022%;height: 318px;padding: 10px;font-size: 9px;background-color: #fff;background-image: url("../starkers-master/images/detailz.png"); }
+.crumbs_nav li{display:inline-block;margin-left: 8px;}
+.breadcrumbs{margin-bottom: 20px;/*margin-left:12px;*/font-family: helvetica;font-size:9px;text-align: center;}
+li.breadcrumbs h3{font-size: 12pxmargin:0px auto;margin-bottom: 10px}
+.content{padding-top:10px;}
+.date{width:130px;margin: 0 30px 0 0px;font-size: 12px}
+.time{width:120px;font-size: 12px}
+.time li{display:inline-block;}
+.day li{display:inline-block;font-family: bebas neue;}
+.num{font-size: 52px;}
+#mm li{display:block;}
+li.month{font-size: 24px;}
+li.year{font-size: 18px;}
+.time h1{font-size: 52px;font-family: bebas neue;}
+.tickets {position: relative;top:20px;}
+.ticket h3{margin-bottom: 5px;font-size: 12px;}
 .ui-corner-top a{margin-right:5px; font-weight:bold; color:#999;}
-.ui-corner-top a:hover, .ui-corner-top a:active{
-	text-decoration:none;
-	color:#e93a3a;
-}
-.ticket li{
-	display:inline-block;
-	
-}
-#tickets h4{
-	font-size:10px;
-	margin-bottom:5px;
-}
-li .number{
-	border:2px solid #f28989;
-	border-right: 1px solid #f28989;
-	padding:1px;
-	float:left;
-	text-align:center;
-}
-li .kids{
-	border-left: 1px solid #f28989;
-	border-right: 2px solid #f28989;
-}
-.number h1{
-	font-family:bebas neue;
-	font-size:52px;
-}
-.costing{
-	position: relative;
-	bottom: 114px;
-left: 160px;
-
-}
-.ticket_nav{
-	position: absolute;
-	bottom:5%;
-	left:32%
-}
-.ticket_nav a.bck{
-	display:inline-block;
-	width:22px;
-	height:22px;
-	text-indent: -9999999px;
-	background-image: url("../starkers-master/images/pvs.png");
-	background-repeat: no-repeat;
-}
-.ticket_nav a.bck:hover {
-	background-image: url("../starkers-master/images/pvs(h).png");
-	background-repeat: no-repeat;
-}
-.ticket_nav .error_msgs {
-	font-size: 12px;
-font-family: helvetica;
-font-weight: bold;
-text-transform: lowercase;
-color: #e93a3a;
-position: absolute;
-top: 5px;
-width: 200px;
-left: -270px;
-}
-a.reset{
-	display:inline-block;
-	width:22px;
-	height:22px;
-	text-indent: -9999999px;
-	background-image: url("../starkers-master/images/rst.png");
-	background-repeat: no-repeat;
-}
-.ticket_nav a.reset:hover {
-	background-image: url("../starkers-master/images/rst(h).png");
-	background-repeat: no-repeat;
-}
-a.frwd{
-	display:inline-block;
-	width:22px;
-	height:22px;
-	text-indent: -9999999px;
-	background-image: url("../starkers-master/images/nxt.png");
-	background-repeat: no-repeat;
-}
-.ticket_nav a.frwd:hover {
-	background-image: url("../starkers-master/images/nxt(h).png");
-	background-repeat: no-repeat;
-}	
+.ui-corner-top a:hover, .ui-corner-top a:active{text-decoration:none;color:#e93a3a;}
+.ticket li{display:inline-block;	}
+#tickets h4{font-size:10px;margin-bottom:5px;}
+li .number{border:2px solid #f28989;border-right: 1px solid #f28989;padding:1px;float:left;text-align:center;}
+li .kids{border-left: 1px solid #f28989;border-right: 2px solid #f28989;}
+.number h1{font-family:bebas neue;font-size:52px;}
+.costing{position: relative;top: 20px;left: 16px;}
+.ticket_nav{position: absolute;bottom:5%;left:24%}
+.ticket_nav a.bck{display:inline-block;width:22px;height:22px;text-indent: -9999999px;background-image: url("../starkers-master/images/pvs.png");background-repeat: no-repeat;}
+.ticket_nav a.bck:hover {background-image: url("../starkers-master/images/pvs(h).png");background-repeat: no-repeat;}
+.ticket_nav .error_msgs {font-size: 12px;font-family: helvetica;font-weight: bold;text-transform: lowercase;color: #e93a3a;position: absolute;top: 5px;width: 200px;left: -270px;}
+a.reset{display:inline-block;width:22px;height:22px;text-indent: -9999999px;background-image: url("../starkers-master/images/rst.png");background-repeat: no-repeat;}
+.ticket_nav a.reset:hover {background-image: url("../starkers-master/images/rst(h).png");background-repeat: no-repeat;}
+a.frwd{display:inline-block;width:22px;height:22px;text-indent: -9999999px;background-image: url("../starkers-master/images/nxt.png");background-repeat: no-repeat;}
+.ticket_nav a.frwd:hover {background-image: url("../starkers-master/images/nxt(h).png");background-repeat: no-repeat;}	
 
 .costing table{
-	margin-top: 20px;
+	
 }
-.costing td{
-	padding:4.08px;
-	text-align:left;
+.costing td{padding:4.08px;text-align:left;
 }
-td .first{
-	font-size:14px;
-}
-td .second{
-	text-align:right;
-}
-.costing td:nth-child(2){
-	text-align:right;
-	padding-left: 10px;
-	width:70px;
-}
-.first{
-	font-size: 14px;
-}
-.total_fee td{
-	border-top: 1px solid #f28989;
-}
-.second_total{
-	font-size: 19px;
-	text-align:right;
-}
-.ticket_nav li{
-
-	margin-right:10px;
-}
+td .first{font-size:14px;}
+td .second{text-align:right;}
+.costing td:nth-child(2){text-align:right;padding-left: 10px;width:70px;}
+.first{font-size: 14px;}
+.total_fee td{border-top: 1px solid #f28989;}
+.second_total{font-size: 19px;text-align:right;}
+.ticket_nav li{margin-right:10px;}
 /*allan changes*/
 a.add{
 	display:inline-block;
@@ -524,11 +256,12 @@ a#clock{
 /* stub */
 
 .stub{
+	width:41.978%;
 	position: relative;
 	background-color: #fff;
 	width: 390px;
 	height: 223px;
-	padding: 105px 40px 10px 107px;
+	padding: 105px 30px 10px 105px;
 	font-size: 10px;
 	overflow:hidden;
 }
@@ -917,7 +650,7 @@ width:400px}
 
 
 .book{position:relative; bottom:0px; z-index:999; opacity: 0.7;}
-.ticket{position: absolute;opacity: 0.9;display:none;left:24%;top:5%; text-transform:uppercase;} 
+
 
 /*seats colors*/
 .Booked{background-color:#23b065;}
@@ -1074,6 +807,7 @@ color: red;
 	padding-left:23px;
 	}
 .overlay{
+opacity:0.8;
 background-color: #000;
 display:none;
 width: 100%;
