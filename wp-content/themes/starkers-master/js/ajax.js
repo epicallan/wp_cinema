@@ -884,7 +884,16 @@ $('.close,#quit').click(function(){
 							return false;
 							}
 						}
-				}
+					if($id=='payment_details'){
+						if($("#contacts").valid()){
+						//display disclaimer
+						$('.purchase_disclaimer').show();
+						//submit purchase data via ajax
+						purchase_details();
+						}//end inner id
+					}
+				}// end before activate
+				
 			}); // end tabs
 		$(".ui-tabs-panel").each(function(i){
 			
@@ -901,6 +910,7 @@ $('.close,#quit').click(function(){
 			  }
 				
 			});
+			
 		$('.next-tab, .prev-tab').click(function() { 
 			var index=$(this).attr("rel");
 			alert(index);
@@ -963,7 +973,6 @@ $('.close,#quit').click(function(){
 				var $width=200*5;
 				$('.feature_slider').css('width',$width)
 			}
-			
 		$('.div3').show();
 			$('.bxslider').slick({
 			  dots: false,autoplaySpeed: 5000, slidesToShow:5,slidesToScroll: 1,autoplay: true, slide:'li',
