@@ -18,6 +18,7 @@
 	require_once( 'external/starkers-utilities.php' );
 	require_once( 'meta_box.php');
 	require'ajax.php';
+	require'test.php';
    	/* ========================================================================================================================
 	
 	Theme specific settings

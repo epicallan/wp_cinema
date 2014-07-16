@@ -258,10 +258,10 @@ function ajax_dates($id){
 	  jQuery.ajax({
 		 url: MyAjax.ajaxurl,
 		 type:'POST',
-			dataType: 'json',
+		 dataType: 'json',
 		 data: ({action : 'get_my_dates',id:$id}),
 		 success: function(data,state) {
-			
+				console.log(data);
 				availableDates=Array.prototype.slice.call(data)
 				//getting calender dates
 				$('#date').datepicker({ beforeShowDay: available 
@@ -936,7 +936,7 @@ $('.close,#quit').click(function(){
 /********************************************SLIDER************************************/
 	$('.div3').show();
 		$('.bxslider').slick({
-		  dots: false,autoplaySpeed: 5000, slidesToShow:5,slidesToScroll: 1,autoplay: false, slide:'li',
+		  dots: false,autoplaySpeed: 5000, slidesToShow:5,slidesToScroll: 1,autoplay: true, slide:'li',
 		  onAfterChange:function(){ 
 				$('.focus_slider').fadeOut();
 				var $next=$('.slick-active').next();
@@ -961,7 +961,7 @@ $('.close,#quit').click(function(){
 		});
 					
 /************************form validation*************************************/
-$("#contacts").validate({
+ $("#contacts").validate({
 	rules: {
         phone: {
 			required: true,digits: true,maxlength:10,minlength: 10,

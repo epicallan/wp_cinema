@@ -58,27 +58,18 @@ function dateRange($first, $last, $step = '+1 day', $format = 'j-n-Y' ) {
 		$dates[] = date($format, $current);
     	 $current = strtotime($step, $current);
     }
- return $dates;
+	//eliminating dates that are past todays date
+	$today=date('Y-m-d');
+	foreach($dates as $mydate){
+		$date= date('Y-m-d',strtotime($mydate));
+		if($today <= $date){
+			$new_dates[]=$mydate;
+			}
+	}// end for
+ 	return $new_dates;
+		//return $dates;
 }	
-function calender($arr){
-
-		foreach($arr as $mydate){
-		static $j=0;
-		//get dates put them in lis
-		$new_date = date("D j M Y", strtotime($mydate)); 
-		$dateparts=explode(" ",$new_date);
-		$day=$dateparts[0];
-		$date=$dateparts[1];
-		$month=$dateparts[2];
-		$year=$dateparts[3];
-		$organised_date=$day.' '.$date.' '. $month.' '. $year;
-		echo "<li><a href='$organised_date' class='date_amount'>".$day." ". $date."</a></li>";
-		$j++;
-		}//end for each
-	echo "<li class='pointer'></li>";
-	
-	}//end calender	
-	function get_my_times(){
+function get_my_times(){
 		$id=$_POST['id'];
 		movie_times($id); 
 		die(); 
@@ -257,7 +248,7 @@ function update_seats(){
 		}// end update_seats
 add_action("wp_ajax_update_seats", "update_seats");
 
-// update data base table
+// update data base table after clicking seat
 	function UpdateTable($id,$book){
 		global $wpdb;
 		$wp_session = WP_Session::get_instance();
