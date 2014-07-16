@@ -235,7 +235,7 @@ jQuery(document).ready(function($) {
 		////alert($post);
 		ajax_dates($post);
 		movie_times($post);
-		ajax_mobileMoney_status();
+		//ajax_mobileMoney_status();
 		
 			});// end click
 /**********************************checking if mobile money is up*******************************/
@@ -821,6 +821,7 @@ $('.close,#quit').click(function(){
 	var $countdown_switch=true; // for countdown
 	$("#tabs").tabs({
 		beforeActivate: function (event,ui) {
+		
 			var $id=ui.newPanel.attr('id')
 			$('#payment_details').hide();
 		 	if($id =='seats_contentID'){
@@ -838,9 +839,9 @@ $('.close,#quit').click(function(){
 						
 						}else{
 						$(".error_container").html('');
-						}
-					
-				if(progress.yes && purchase.$number_seats>0){
+						
+					}
+					if(progress.yes && purchase.$number_seats>0){
 						//set continuing from seats chart
 						if($counter==purchase.$number_seats){
 							purchase.$continue=true;
@@ -855,6 +856,8 @@ $('.close,#quit').click(function(){
 							mycountdown($time_countdown);
 							}
 						}
+				
+						
 				}
 				if($id=='phone_email_li'){
 					//alert($id);
@@ -883,7 +886,27 @@ $('.close,#quit').click(function(){
 						}
 				}
 			}); // end tabs
-
+		$(".ui-tabs-panel").each(function(i){
+			
+			  var totalSize = $(".ui-tabs-panel").size() - 1;
+			
+			  if (i != totalSize) {
+				  next = i + 1;
+				  $(this).append("<a href='#' class='next-tab mover' rel='" + next + "'>Next Page &#187;</a>");
+			  }
+			  
+			  if (i != 0) {
+				  prev = i-1;
+				  $(this).append("<a href='#' class='prev-tab mover' rel='" + prev + "'>&#171; Prev Page</a>");
+			  }
+				
+			});
+		$('.next-tab, .prev-tab').click(function() { 
+			var index=$(this).attr("rel");
+			alert(index);
+           	$('#tabs').tabs("option", "active", index);
+           return false;
+       });
 /***********toggle on and off calender*************/
 //toogle on and off calender and calenders
 		$('body').click(function(event){
@@ -934,21 +957,28 @@ $('.close,#quit').click(function(){
 			});	*/
 		
 /********************************************SLIDER************************************/
-	$('.div3').show();
-		$('.bxslider').slick({
-		  dots: false,autoplaySpeed: 5000, slidesToShow:5,slidesToScroll: 1,autoplay: true, slide:'li',
-		  onAfterChange:function(){ 
-				$('.focus_slider').fadeOut();
-				var $next=$('.slick-active').next();
-				var $attr=$next.next().children('div').attr('attr');
-					if($attr.length==0){
-					$('.div1').fadeIn();
-					//alert($attr);
-					}else{
-						$("."+$attr).fadeIn();
-						}
-					
-			},
+			
+			width = $(window).width();
+			if (width < 1500 && width >1280  ) {
+				var $width=200*5;
+				$('.feature_slider').css('width',$width)
+			}
+			
+		$('.div3').show();
+			$('.bxslider').slick({
+			  dots: false,autoplaySpeed: 5000, slidesToShow:5,slidesToScroll: 1,autoplay: true, slide:'li',
+			  onAfterChange:function(){ 
+					$('.focus_slider').fadeOut();
+					var $next=$('.slick-active').next();
+					var $attr=$next.next().children('div').attr('attr');
+						if($attr.length==0){
+						$('.div1').fadeIn();
+						//alert($attr);
+						}else{
+							$("."+$attr).fadeIn();
+							}
+						
+				},
 			responsive: [
 			{
 				breakpoint: 1024,settings: {slidesToShow:4,slidesToScroll: 1,dots: false, autoplay:true, slide:'li'}

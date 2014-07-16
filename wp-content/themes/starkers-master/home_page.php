@@ -9,9 +9,8 @@
 	$args = array( 'post_type' => 'attachment',  'numberposts' => -1,  'post_status' => null, 'post_parent' => $post->ID );
     $attachments = get_posts( $args );
      if ( $attachments ) {
-    
-        foreach ( $attachments as $attachment ) {
-         $bck=$attachment->guid;
+    	foreach ( $attachments as $attachment ) {
+        $bck=$attachment->guid;
 			}
      }
 endwhile; 
@@ -78,20 +77,21 @@ wp_reset_query();
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header') ); ?>
 
     <div class="ticket_container clearfix">
-		<ul class="ticket clearfix">
-    <li class="details fleft">
-        <ul id="tabs">
+		<ul class="ticket clea rfix">
+    	<li class="details fleft">
+            <ul id="tabs">
         <ul class="breadcrumbs">
         			<li class='count_down'>
                         	<h4>Count Down To Session Expire</h4>
                      		<div class='time_container'><h4 class="getting-started"></h4></div>
                     	</li>
-                <h3>Your Ticket</h3>
+               		 <h3>Your Ticket</h3>
                         <li><a href="#tab1" >1. Pick a Time & Date</a></li>
                         <li><a href="#seats_contentID">2. Choose a Seat</a></li>
                         <li><a href="#phone_email_li">3. Make your Payment</a></li>
-                        </ul>
-              <li class="content clearfix" id="tab1">
+                        <li style="display:none"><a href="#payment_details" >4. payment_details</a></li>
+                        </ul><!---tabs titles-->
+             		 <li class="content clearfix" id="tab1">
                                 <div class="myframe fleft">
 	                                <div class="date fleft">
                                        <h3>date</h3>
@@ -167,8 +167,8 @@ wp_reset_query();
                                     <li><a class="reset" id="reset_01" href="#">reset</a></li>
                                     <li><a class="frwd" href="#" id="next_01">next</a></li>
                                 </ul>
-                               </li>   
-                               <li class="seats_content clearfix" id="seats_contentID">
+                               </li>   <!---1st tab--->
+                     <li class="seats_content clearfix" id="seats_contentID">
                                             <ul class="key">
                                              <li><span class="key_available"></span>available</li>
                                             <li><span class="key_unavailable"></span> unavailable</li>
@@ -189,8 +189,8 @@ wp_reset_query();
                                         <li><a class="frwd" href="#"  id="next_02">next</a></li>
                                       
                                 </ul>   
-                           </li>           
-                <li class="payment_content clearfix" id="phone_email_li">
+                           </li>    <!--- 2nd tab --->       
+              		 <li class="payment_content clearfix" id="phone_email_li">
                                     <form method="post" id="contacts">
                                     <fieldset class="contact_info">
                                         <ul>
@@ -239,8 +239,8 @@ wp_reset_query();
                                 </ul>    
                               
                                     
-                            </li>
-                  <li class="payment_details clearfix" id="payment_details">
+                            </li>	<!-- 3rd -->
+                   	 <li class="payment_details clearfix" id="payment_details">
                                 <p id="notice">use the details below to send your mobile money payment for the ticket purchase</p><br>
                                 <ul class='process'>
                                     <li>
@@ -266,22 +266,21 @@ wp_reset_query();
                                 </ul>
                                
                                <div class="shared_nav">
-                           <!--     <input type="submit" class="submit process_ticket" name="process"  id="process" value="Process Ticket">--->
-                              	<ul class=" clearfix" id="nav04">
-								<li><a class="bck" href="#" id="prev_04">Back</a></li>
-								</ul>    
+                                    <ul class=" clearfix" id="nav04">
+                                        <li><a class="bck" href="#" id="prev_04">Back</a></li>
+                                    </ul>    
                                 </div>
                         
-                   			</li>
-                   <li>
+                   			</li>	<!--4th tab-->
+                     <li>
                       <div class="purchase_reset">
                        	<h4>Your session has expired</h4>
                         <input type="button" name="book_again"  id="book_again" value="Book Again">
                         <input type="button" name="quit"  id="quit" value="quit">
                        </div>
                                
-                     </li> 
-                      <li>
+                     </li> <!-- purchase rest-->
+                     <li>
                           <div class="purchase_disclaimer">
                                 <h4>Disclaimer</h4>
                                 <p>Please enter the following mobile money details CAREFULLY.</p>
@@ -290,14 +289,12 @@ wp_reset_query();
                                 <input type="button" name="abort"  id="abort" value="abort">
                            </div>
                                
-                     </li> 
-                        <li>
+                     </li> <!-- purchase disclaimer -->
+                     <li>
                        <div id="verify_container"></div>
-                           
-                        </li>  
-                 </ul>
-             
-                 	 </li>
+                        </li>  <!-- verify container -->
+                 	  </ul> <!-- end tabs --->
+         </li><!-- end tickets left details -->
         <li class="stub fleft">
                		<div class="bg_img"><img src="../development/images/t-bkg.jpg"></div>
 					<div class="opacity"></div>
@@ -371,42 +368,38 @@ wp_reset_query();
 					<a id="all_movies" href="">check out our full movie listing</a>
 				</div>
 		<div class="feature_slider">
-                <ul class="bxslider">
+             
+                    <ul class="bxslider">
 					<?php
 					$i=0;
-					 $currentdate=date('Y-m-d');
-					 foreach($enddate as $key=>$lastdate){
-						if($currentdate>$lastdate){
-						
-							}
-						}
-					//	<li><a class="fancybox-media" href="http://www.youtube.com/watch?v=opj24KnzrWo">Youtube</a></li>
-	
 					$video="https://www.youtube.com/watch?v=SPHfeNgogVs";
-					$embed_code = wp_oembed_get($video,array('width'=>500)); 	
-						
-					foreach($images as $key => $src){
-			 		$movie=$store_names[$key];
+					$currentdate=date('Y-m-d');
+					foreach($enddate as $key=>$myend){
+						if($myend>$currentdate){
+							$src=$images[$key];
+								$movie=$store_names[$key];
 					//remove spaces betwwen movie names
 					$movie=str_replace(" ","",$movie);
-					//$date=$startdate[$key]; //not used
+				//	$date=$startdate[$key];
 					$i++;
-					echo "<li class= \"slides first\" id=\"slide$i\" > <img src=\"$src\" alt=\"$movie\">
+					echo "<li class= \"slides first\" id=\"slide$i\" attr=\"current date: $currentdate ,end date: $myend\"> <img src=\"$src\" alt=\"$movie\">
 							<div class=\"focus_slider div$i $movie$i\" attr=\"$movie$i\">
 									<div class='focus'>
 											<ul>
-												<li class='i_t_s'>
-														<ul>
-															<li class='synopsis'><a href='#' title='synopsis'>see info</a></li>
-															<li class='trailer'><a class=\"fancybox-media\" href=\"$video\">watch trailer</a></li>
-															<li class='share'><a href='#' title='share'>share</a></li>
-														</ul>
-													</li>
-													<li class='buy'><a href='#' name=\"$movie\" title='buy' class =\"book $src\" id=\"$ids[$key]\" ><span class='ticket_icon'></span>buy ticket</a></li>
-												</ul>
-											</div>
+									<li class='i_t_s'>
+											<ul>
+												<li class='synopsis'><a href='#' title='synopsis' class=\"$ids[$key]\">see info</a></li>
+												<li class='trailer'><a href='#' title='trailer' class=\"$video\">watch trailer</a></li>
+												<li class='share'><a href='#' title='share'>share</a></li>
+											</ul>
+										</li>
+										<li class='buy'><a href='#' name=\"$movie\" title='buy' class =\"book $src\" id=\"$ids[$key]\" ><span class='ticket_icon'></span>buy ticket</a></li>
+									</ul>
+								</div>
 							</div>";
-					}//end for
+							}
+						}
+					
 				 ?>
                   </ul> 
 				</div>
