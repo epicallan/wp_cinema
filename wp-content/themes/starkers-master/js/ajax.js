@@ -395,7 +395,7 @@ function ajax_dates($id){
 					
 					purchase.$reason=data.reason;
 					//create seats chart
-					alert("progress: "+progress.yes);
+					//alert("progress: "+progress.yes);
 					periodic_ajax($table_name);
 					}
 				});// end ajax
