@@ -176,7 +176,8 @@ wp_reset_query();
                                             </ul>
                                             <ul class="seat_chart ">
                                                 <li>
-                                                    <img src="../dev/images/screen.png"/>
+                                                <img src="<?php bloginfo('template_directory'); ?>/images/screen.png"  />  
+                                                  
                                                  </li>
                                                 <li>
                                                 <div class="tableDiv"></div>  
