@@ -968,23 +968,6 @@ position: absolute;bottom: 1.6em;margin-left: 30%;
 .slider_nav{
 position: relative;top: 1.6em;
 	}
-.movie_content {
-	position: absolute;
-	z-index: 999;
-	width: 40%;
-	bottom: 24em;
-	background-color: #e93a3a;
-	margin-left: 30%;
-	height: 22em;
-	display:none;
-}
-.movie_details {
-	position: relative;
-	margin-left: 5%;
-	margin-top: 5%;
-}
-.movie_close{
-	position: relative;
-	top:0;
-	right:0;
-	}
+.movie_content {position:absolute;top:0px;left:0px;z-index: 999;width: 100%;background-color: rgba(0,0,0,.85);height: 100%;display:none;}
+.movie_details {position: relative;left:50%;top:50%;margin-left:-250px;margin-top:-140.5px;}
+.movie_close{position: relative;top:0;right:0;}

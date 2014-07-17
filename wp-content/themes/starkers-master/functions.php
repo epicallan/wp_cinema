@@ -98,7 +98,7 @@
 	}	
 	function my_theme_styles() {
 			// replace "10" with your version number; increment as you push changes
-			wp_enqueue_style('my-theme-style', get_bloginfo('template_directory') . '/style.css', false, 16);
+			wp_enqueue_style('my-theme-style', get_bloginfo('template_directory') . '/style.css', false, 17);
 		}
 	add_action('wp_print_styles', 'my_theme_styles');
 	/* ========================================================================================================================
