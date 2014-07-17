@@ -293,7 +293,7 @@ function ajax_dates($id){
 			 //create one single date
 			 date.$row=date.$date+" "+date.$month+" "+date.$year;
 			// //alert(date.$row);
-			event.preventDefault();		
+			//event.preventDefault();		
 			}
 		/***************pops calender************/
 		$('.showdates').show(); // change styles
@@ -385,9 +385,10 @@ function ajax_dates($id){
 					$table_name=data.table;
 					unbook_table_seats($table_name)
 					progress.yes=data.proceed;
+					
 					purchase.$reason=data.reason;
 					//create seats chart
-					
+					alert("progress: "+progress.yes);
 					periodic_ajax($table_name);
 					}
 				});// end ajax
