@@ -53,22 +53,29 @@ jQuery(document).ready(function($) {
 	//load ticket staff
 /***************************ajax play trailer***********************/
 	$('.bxslider').on('click','.trailer', function(){
-		$trailer=$(this).children('a');
+		 $trailer=$(this).children('a');
 		 $url=$trailer.attr('class');
 		 alert($url);
-		 jQuery.ajax({
-		 url: MyAjax.ajaxurl,
-		 type:'POST',
-		 dataType: 'html',
-		 data: ({action : 'get_movie_trailer',url:$url}),
-		success: function(data,state) {
-			alert(state);
-			 	$('.feature_slider').html(data);
-				
-				}
-		 });//end ajax
+			 jQuery.ajax({
+			 url: MyAjax.ajaxurl,
+			 type:'POST',
+			 dataType: 'html',
+			 data: ({action : 'get_movie_trailer',url:$url}),
+				success: function(data,state) {
+					alert(state);
+					$('.movie_content').show();
+					$('.movie_details').html(data);
+					
+					}
+			 });//end ajax
 		
 		})	
+	$('.movie_close').click(function(){
+		$('.movie_content').fadeOut( "slow", function() {
+				$('.movie_details').html('');
+		  });
+				
+		});
 /********************************************TICKETING AMOUNT********************************************/		
 	// function computing amounts
 		function compute_conv(){
@@ -667,7 +674,9 @@ function ajax_dates($id){
 						$('.process').hide();
 						$('#notice').hide();
 						//place new content in verify
-						$('#verify_container').html(data);
+						if(verify){
+							$('#verify_container').html(data);
+						}
 						//make next ajax call,to send email and sms
 					
 						if($('#verify_container').find('span').text()=="Oops!!!"){
@@ -820,6 +829,7 @@ $('.close,#quit').click(function(){
 	
 /************************************************Tabs Navigation************************************************************************/
 	var $countdown_switch=true; // for countdown
+	var verify=false; //to stop verify container from appearing any where
 	$("#tabs").tabs({
 		beforeActivate: function (event,ui) {
 		
@@ -889,10 +899,12 @@ $('.close,#quit').click(function(){
 						if($("#contacts").valid()){
 						//display disclaimer
 						$('.purchase_disclaimer').show();
+						verify=true;
 						//submit purchase data via ajax
 						purchase_details();
 						}//end inner id
-					}
+					}//end if
+					
 				}// end before activate
 				
 			}); // end tabs
@@ -902,19 +914,39 @@ $('.close,#quit').click(function(){
 			
 			  if (i != totalSize) {
 				  next = i + 1;
-				  $(this).append("<a href='#' class='next-tab mover' rel='" + next + "'>Next Page &#187;</a>");
+				  if(next==1){
+				  $(this).append("<a href='#' class='next-tab mover navfwd frwd' rel='" + next + "' style='margin-left:5%'>Next Page &#187;</a>");
+				  }else{
+					   $(this).append("<a href='#' class='next-tab mover navfwd frwd' rel='" + next + "'>Next Page &#187;</a>");
+				
+					  }
+				  
 			  }
 			  
 			  if (i != 0) {
 				  prev = i-1;
-				  $(this).append("<a href='#' class='prev-tab mover' rel='" + prev + "'>&#171; Prev Page</a>");
+				  if(prev==2){
+					//  <li><a class="bck" href="#" id="prev_04">Back</a></li>
+					  $('#nav04').html("<li><a href='#' class='prev-tab mover last' rel='" + prev + "'>Back</a></li>");
+				  }
+				 else if(prev==1){
+					    $(this).append("<a href='#' class='prev-tab mover bck navbck ' rel='" + prev + "' style='margin-left:26%'>&#171; Prev Page</a>");
+					  }else{
+					   $(this).append("<a href='#' class='prev-tab mover bck navbck ' rel='" + prev + "'>&#171; Prev Page</a>");
+					  }
 			  }
 				
 			});
-			
+			/* <ul class="ticket_nav nav02 clearfix" id="nav03">
+                              	
+                                    <li><a class="bck" href="#" id="prev_03">previous</a></li>
+                                    <li><a class="reset" id="reset_03" href="#" style="display:none">reset</a></li>
+                                    <li><a class="frwd submit" href="#"  id="next_03">next</a></li>
+                                </ul>    
+								*/
 		$('.next-tab, .prev-tab').click(function() { 
 			var index=$(this).attr("rel");
-			alert(index);
+			//alert(index);
            	$('#tabs').tabs("option", "active", index);
            return false;
        });
@@ -971,12 +1003,12 @@ $('.close,#quit').click(function(){
 			
 			width = $(window).width();
 			if (width < 1500 && width >1280  ) {
-				var $width=200*5;
+				var $width=202*5;
 				$('.feature_slider').css('width',$width)
 			}
 		$('.div3').show();
-			$('.bxslider').slick({
-			  dots: false,autoplaySpeed: 5000, slidesToShow:5,slidesToScroll: 1,autoplay: true, slide:'li',
+		var slider=$('.bxslider').slick({
+			  dots: true,autoplaySpeed: 2500, slidesToShow:5,slidesToScroll: 1,autoplay: true, slide:'li',
 			  onAfterChange:function(){ 
 					$('.focus_slider').fadeOut();
 					var $next=$('.slick-active').next();
@@ -989,16 +1021,15 @@ $('.close,#quit').click(function(){
 							}
 						
 				},
-			responsive: [
-			{
-				breakpoint: 1024,settings: {slidesToShow:4,slidesToScroll: 1,dots: false, autoplay:true, slide:'li'}
-				},
-			{
-			 	breakpoint: 960,settings: {slidesToShow:3,slidesToScroll: 1,dots: false, autoplay:true, slide:'li'}
-			}
-		  ]
-		  
-		});
+			});
+		//naviagation
+		$('#slider_next').click(function(){
+				slider.slickNext();
+			})
+		$('#slider_prev').click(function(){
+				slider.slickPrev();
+			})
+	
 					
 /************************form validation*************************************/
  $("#contacts").validate({

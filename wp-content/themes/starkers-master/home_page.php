@@ -165,7 +165,7 @@ wp_reset_query();
                                 <ul class="ticket_nav clearfix" >
                               		<li class='error_container'></li>
                                     <li><a class="reset" id="reset_01" href="#">reset</a></li>
-                                    <li><a class="frwd" href="#" id="next_01">next</a></li>
+                                    <!--<li><a class="frwd" href="#" id="next_01">next</a></li>-->
                                 </ul>
                                </li>   <!---1st tab--->
                      <li class="seats_content clearfix" id="seats_contentID">
@@ -184,9 +184,9 @@ wp_reset_query();
                                             </ul>
                                      <ul class="ticket_nav  nav02 clearfix" id="nav02">
                                      	<li class='error_container'></li>
-                                        <li><a class="bck" href="#" id="prev_02">previous</a></li>
+                                     <!--   <li><a class="bck" href="#" id="prev_02">previous</a></li>-->
                                         <li><a class="reset" id="reset_02" href="#">reset</a></li>
-                                        <li><a class="frwd" href="#"  id="next_02">next</a></li>
+                                      <!--  <li><a class="frwd" href="#"  id="next_02">next</a></li> -->
                                       
                                 </ul>   
                            </li>    <!--- 2nd tab --->       
@@ -233,9 +233,9 @@ wp_reset_query();
                                 
                                   <ul class="ticket_nav nav02 clearfix" id="nav03">
                               	
-                                    <li><a class="bck" href="#" id="prev_03">previous</a></li>
+                                  <!--  <li><a class="bck" href="#" id="prev_03">previous</a></li> -->
                                     <li><a class="reset" id="reset_03" href="#" style="display:none">reset</a></li>
-                                    <li><a class="frwd submit" href="#"  id="next_03">next</a></li>
+                                  <!---  <li><a class="frwd submit" href="#"  id="next_03">next</a></li> -->
                                 </ul>    
                               
                                     
@@ -264,13 +264,14 @@ wp_reset_query();
                                         </ul>
                                     </li>
                                 </ul>
-                               
                                <div class="shared_nav">
                                     <ul class=" clearfix" id="nav04">
-                                        <li><a class="bck" href="#" id="prev_04">Back</a></li>
+                                      <!--  <li><a class="bck" href="#" id="prev_04">Back</a></li>-->
                                     </ul>    
                                 </div>
-                        
+                        	  <li>
+                       		<div id="verify_container"></div>
+                        	</li>  <!-- verify container -->
                    			</li>	<!--4th tab-->
                      <li>
                       <div class="purchase_reset">
@@ -290,9 +291,7 @@ wp_reset_query();
                            </div>
                                
                      </li> <!-- purchase disclaimer -->
-                     <li>
-                       <div id="verify_container"></div>
-                        </li>  <!-- verify container -->
+                   
                  	  </ul> <!-- end tabs --->
          </li><!-- end tickets left details -->
         <li class="stub fleft">
@@ -358,8 +357,14 @@ wp_reset_query();
 			</form>
 			</div>
 	<div class="overlay"></div>
+        <div class="movie_content">
+         	<div class="loader"></div>
+            <a href="#" class="movie_close">X</a>
+            <div class="movie_details">
+        </div>
+    </div>
     <div class="feature">
-		<div class="feature_box">
+  		<div class="feature_box">
 					<ul class="feature_filter">
 						<li><a class ='test' href="">now showing</a></li>
 						<li><a href="">coming soon</a></li>
@@ -367,18 +372,19 @@ wp_reset_query();
                     <div id="hide"></div>
 					<a id="all_movies" href="">check out our full movie listing</a>
 				</div>
-		<div class="feature_slider">
-             
-                    <ul class="bxslider">
+			<div class="feature_slider">
+             <ul class="bxslider">
 					<?php
 					$i=0;
-					$video="https://www.youtube.com/watch?v=SPHfeNgogVs";
+					//$video="https://www.youtube.com/watch?v=SPHfeNgogVs";
 					$currentdate=date('Y-m-d');
 					foreach($enddate as $key=>$myend){
 						if($myend>$currentdate){
 							$src=$images[$key];
-								$movie=$store_names[$key];
-					//remove spaces betwwen movie names
+						//getting movie names	
+						$movie=$store_names[$key];
+						$movie_name=$movie;
+					//remove spaces between movie names
 					$movie=str_replace(" ","",$movie);
 				//	$date=$startdate[$key];
 					$i++;
@@ -388,8 +394,8 @@ wp_reset_query();
 											<ul>
 									<li class='i_t_s'>
 											<ul>
-												<li class='synopsis'><a href='#' title='synopsis' class=\"$ids[$key]\">see info</a></li>
-												<li class='trailer'><a href='#' title='trailer' class=\"$video\">watch trailer</a></li>
+												<li class='synopsis'><a href='#' title='synopsis' class=\"$movie_name\">see info</a></li>
+												<li class='trailer'><a href='#' title='trailer' class=\"$link[$key]\">watch trailer</a></li>
 												<li class='share'><a href='#' title='share'>share</a></li>
 											</ul>
 										</li>
@@ -402,6 +408,10 @@ wp_reset_query();
 					
 				 ?>
                   </ul> 
+                 <!-- <ul class="slider_nav">
+                      <li><a href="#" class="slick-prev">Prev</a></li>
+                      <li><a href="#" class="slick-next">Next</a></li>
+                  </ul> -->
 				</div>
 <<<<<<< HEAD
 	</div>

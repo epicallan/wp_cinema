@@ -208,13 +208,13 @@ li .kids{border-left: 1px solid #f28989;border-right: 2px solid #f28989;}
 .number h1{font-family:bebas neue;font-size:52px;}
 .costing{position: relative;top: 20px;left: 16px;}
 .ticket_nav{position: absolute;bottom:5%;right:60%}
-.ticket_nav a.bck{display:inline-block;width:22px;height:22px;text-indent: -9999999px;background-image: url("../starkers-master/images/pvs.png");background-repeat: no-repeat;}
-.ticket_nav a.bck:hover {background-image: url("../starkers-master/images/pvs(h).png");background-repeat: no-repeat;}
+a.bck{display:inline-block;width:22px;height:22px;text-indent: -9999999px;background-image: url("../starkers-master/images/pvs.png");background-repeat: no-repeat;}
+.bck:hover {background-image: url("../starkers-master/images/pvs(h).png");background-repeat: no-repeat;}
 .ticket_nav .error_msgs {font-size: 12px;font-family: helvetica;font-weight: bold;text-transform: lowercase;color: #e93a3a;position: absolute;top: 5px;width: 200px;left: -270px;}
 a.reset{display:inline-block;width:22px;height:22px;text-indent: -9999999px;background-image: url("../starkers-master/images/rst.png");background-repeat: no-repeat;}
 .ticket_nav a.reset:hover {background-image: url("../starkers-master/images/rst(h).png");background-repeat: no-repeat;}
 a.frwd{display:inline-block;width:22px;height:22px;text-indent: -9999999px;background-image: url("../starkers-master/images/nxt.png");background-repeat: no-repeat;}
-.ticket_nav a.frwd:hover {background-image: url("../starkers-master/images/nxt(h).png");background-repeat: no-repeat;}	
+a.frwd:hover {background-image: url("../starkers-master/images/nxt(h).png");background-repeat: no-repeat;}	
 
 .costing table{
 	
@@ -227,7 +227,7 @@ td .second{text-align:right;}
 .first{font-size: 14px;}
 .total_fee td{border-top: 1px solid #f28989;}
 .second_total{font-size: 19px;text-align:right;}
-.ticket_nav li{margin-right:10px;}
+.ticket_nav li{margin-right:40px;}
 /*allan changes*/
 a.add{
 	display:inline-block;
@@ -958,3 +958,33 @@ width: 26px;
 a#all_movies {margin-left: 600px;}
 
 }
+/*Tickets nav*/
+.navfwd{
+position: absolute;bottom: 1.6em;margin-left: 30%;
+}
+.navbck{position: absolute;bottom: 1.6em;margin-left: 23%;
+}
+/*slider nav*/
+.slider_nav{
+position: relative;top: 1.6em;
+	}
+.movie_content {
+	position: absolute;
+	z-index: 999;
+	width: 40%;
+	bottom: 24em;
+	background-color: #e93a3a;
+	margin-left: 30%;
+	height: 22em;
+	display:none;
+}
+.movie_details {
+	position: relative;
+	margin-left: 5%;
+	margin-top: 5%;
+}
+.movie_close{
+	position: relative;
+	top:0;
+	right:0;
+	}
